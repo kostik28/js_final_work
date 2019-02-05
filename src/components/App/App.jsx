@@ -20,7 +20,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        /*{this.props.isOpenedModalForm && }*/
         <Header
           pages={this.props.pages}
           showModalForm={this.props.showModalForm} />
