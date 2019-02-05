@@ -57,7 +57,7 @@ const actions = {
     };
   },
 
-  showModalForm() {
+  showModalForm(nameForm) {
     return {
       type: SHOW_MODAL_FORM,
       nameForm
