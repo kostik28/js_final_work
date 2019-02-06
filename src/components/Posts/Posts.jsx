@@ -18,6 +18,10 @@ class Posts extends React.Component{
     return(
       <div>
         <h4>Список постов</h4>
+        <button
+          onClick={(e) => this.props.actions.showModalForm(e.target.innerHTML)}>
+          new post
+        </button>
         {
           this.props.posts.map((post, i) => {
             return (

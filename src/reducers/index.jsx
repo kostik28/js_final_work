@@ -7,19 +7,24 @@ import {
   GET_POSTS_FAIL,
   GET_POSTS_LOADING,
   GET_POSTS_SUCCESS,
-  SHOW_MODAL_FORM
+  SHOW_MODAL_FORM,
+  USER_LOGGED_IN,
+  USER_INPUT_LOGIN_CHANGED,
+  USER_INPUT_PASSWORD_CHANGED
 } from '../constants';
 
 export const initialState = {
   users: [],
   posts: [],
   loggedUsers: {},
+  loginInputValue: null,
+  passwordInputValue: null,
   isShowedButtonNewPost: false,
   isShowedButtonEditPost: false,
   isShowedButtonLikePost: false,
   isOpenedModalForm: false,
   isSavedDataForm: false,
-  nameModalForm: '',
+  nameModalForm: null,
   error: null,
   isUsersLoading: false,
   isPostsLoading: false,
@@ -84,6 +89,25 @@ const users = (state = initialState, action) =>{
         ...state,
         isOpenedModalForm: true,
         nameModalForm: nameForm
+      };
+
+    case USER_LOGGED_IN:
+      return {
+        ...state
+      };
+
+    case USER_INPUT_LOGIN_CHANGED:
+      const { login } = action;
+      return {
+        ...state,
+        loginInputValue: login.length > 0 ? login : ''
+      };
+
+    case USER_INPUT_PASSWORD_CHANGED:
+      const { password } = action;
+      return {
+        ...state,
+        passwordInputValue: password.length > 0 ? password : ''
       };
 
     default:

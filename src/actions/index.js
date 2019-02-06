@@ -5,9 +5,11 @@ import {
   GET_POSTS_FAIL,
   GET_POSTS_LOADING,
   GET_POSTS_SUCCESS,
-  SHOW_MODAL_FORM
+  SHOW_MODAL_FORM,
+  USER_LOGGED_IN,
+  USER_INPUT_PASSWORD_CHANGED,
+  USER_INPUT_LOGIN_CHANGED
 } from '../constants'
-import {USER_INPUT_LOGIN_CHANGED} from "../constants";
 
 const actions = {
 
@@ -61,6 +63,26 @@ const actions = {
     return {
       type: SHOW_MODAL_FORM,
       nameForm
+    };
+  },
+
+  onLogin() {
+    return {
+      type: USER_LOGGED_IN,
+    };
+  },
+
+  saveLoginInputValue(login) {
+    return {
+      login,
+      type: USER_INPUT_LOGIN_CHANGED
+    };
+  },
+
+  savePasswordInputValue(password) {
+    return {
+      password,
+      type: USER_INPUT_PASSWORD_CHANGED
     };
   },
 

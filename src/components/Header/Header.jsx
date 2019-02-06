@@ -31,7 +31,7 @@ export default class Header extends React.Component {
   getLinkTologo(obj, i){
     return(
       <li key={i}>
-        <Link to={obj.path}><img src='../../img/logo.png'/></Link>
+        <Link to={obj.path}><img src='../../img/logo.png' alt='Логотип'/></Link>
       </li>
     );
   }
@@ -39,7 +39,7 @@ export default class Header extends React.Component {
   getLinkToModal(obj, i){
     return(
       <li key={i}>
-        <a onClick={(e) => this.props.showModalForm(e.target.innerText)}>
+        <a onClick={(e) => this.props.showModalForm(e.target.innerHTML)}>
           {obj.name}
         </a>
       </li>
