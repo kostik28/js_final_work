@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import actions from '../../actions/index'
 
 import Header from '../Header/Header'
-import Content from '../Content/Content'
 import Footer from '../Footer/Footer'
+import ModalContainer from '../ModalContainer/ModalContainer'
 import Users from '../Users/Users'
 import User from '../User/User'
 import Post from '../Post/Post'
@@ -20,17 +20,21 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        {
+          this.props.isOpenedModalForm &&
+          <ModalContainer />
+        }
         <Header
           pages={this.props.pages}
-          showModalForm={this.props.showModalForm} />
+          showModalForm={this.props.actions.showModalForm}/>
         <Switch>
           <Route
             exact
             path="/"
             render={() => <Redirect to='/posts' />}
           />
-          <Route exact path="/posts"     component={Posts} />
-          <Route exact path="/users"     component={Users} />
+          <Route exact path="/posts" component={Posts} />
+          <Route exact path="/users" component={Users} />
           <Route
             path="/posts/:id"
             exact

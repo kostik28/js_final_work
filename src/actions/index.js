@@ -7,7 +7,7 @@ import {
   GET_POSTS_SUCCESS,
   SHOW_MODAL_FORM
 } from '../constants'
-import {USER_INPUT_LOGIN_CHANGED} from "../../../lesson/src/constants";
+import {USER_INPUT_LOGIN_CHANGED} from "../constants";
 
 const actions = {
 
