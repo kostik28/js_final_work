@@ -6,9 +6,11 @@ import {
   GET_POSTS_LOADING,
   GET_POSTS_SUCCESS,
   SHOW_MODAL_FORM,
-  USER_LOGGED_IN,
   USER_INPUT_PASSWORD_CHANGED,
-  USER_INPUT_LOGIN_CHANGED
+  USER_INPUT_LOGIN_CHANGED,
+  GET_USER_FAIL,
+  GET_USER_LOADING,
+  GET_USER_SUCCESS
 } from '../constants'
 
 const actions = {
@@ -66,10 +68,28 @@ const actions = {
     };
   },
 
-  onLogin() {
-    return {
-      type: USER_LOGGED_IN,
-    };
+  onLogin(loggedUser) {
+
+      return (dispatch, getStore) => {
+        dispatch({
+          type: GET_USER_LOADING
+        });
+
+        fetch('http://localhost:3003/posts')
+        .then(resp => resp.json())
+        .then(data => {
+          dispatch({
+            type: GET_USER_SUCCESS,
+            payload: data,
+          });
+        })
+        .catch(reason => {
+          dispatch({
+            type: GET_USER_FAIL,
+            error: reason.message
+          });
+        });
+      };
   },
 
   saveLoginInputValue(login) {

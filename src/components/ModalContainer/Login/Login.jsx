@@ -34,7 +34,16 @@ class Login extends React.Component {
             ||this.props.loginInputValue.length <= 0
             || this.props.passwordInputValue.length <= 0
           }
-          onClick={(e) => this.props.actions.onLogin()}>
+          onClick={(e) =>{
+            let loggedUser = {};
+            const foundUser = this.props.users.find((user) => user.login === this.props.loginInputValue);
+            if (foundUser !== undefined) {
+              if(foundUser.password === this.props.loginInputValue) {
+                loggedUser = foundUser;
+              }
+            }
+            this.props.actions.onLogin(loggedUser)
+          }}>
           login
         </button>
       </div>

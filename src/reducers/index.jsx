@@ -16,7 +16,7 @@ import {
 export const initialState = {
   users: [],
   posts: [],
-  loggedUsers: {},
+  loggedUser: {},
   loginInputValue: null,
   passwordInputValue: null,
   isShowedButtonNewPost: false,
