@@ -37,10 +37,16 @@ export default class Header extends React.Component {
   }
 
   getLinkToModal(obj, i){
+
+    let linkName = obj.name;
+    if(this.props.loggedUser !== null && obj.name === 'login') {
+      linkName = 'Hi, ' + this.props.loggedUser.login
+    }
+
     return(
       <li key={i}>
-        <a onClick={(e) => this.props.showModalForm(e.target.innerHTML)}>
-          {obj.name}
+        <a onClick={(e) => {this.props.showModalForm(e.target.innerHTML)}}>
+          {linkName}
         </a>
       </li>
     );

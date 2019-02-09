@@ -26,23 +26,24 @@ class Login extends React.Component {
             onChange={(e) => this.props.actions.savePasswordInputValue(e.target.value)}
           />
         </div>
-
+        {this.props.messageToUser !== null &&
+          <div>
+            {this.props.messageToUser}
+          </div>}
         <button
           disabled={
             this.props.loginInputValue === null
             || this.props.passwordInputValue === null
-            ||this.props.loginInputValue.length <= 0
+            || this.props.loginInputValue.length <= 0
             || this.props.passwordInputValue.length <= 0
           }
           onClick={(e) =>{
-            let loggedUser = {};
             const foundUser = this.props.users.find((user) => user.login === this.props.loginInputValue);
             if (foundUser !== undefined) {
-              if(foundUser.password === this.props.loginInputValue) {
-                loggedUser = foundUser;
-              }
+              this.props.actions.onLoginArraySearch(foundUser);
+            }else{
+              this.props.actions.onLogin(this.props.loginInputValue);
             }
-            this.props.actions.onLogin(loggedUser)
           }}>
           login
         </button>

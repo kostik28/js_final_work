@@ -26,6 +26,7 @@ class App extends React.Component {
         }
         <Header
           pages={this.props.pages}
+          loggedUser={this.props.loggedUser}
           showModalForm={this.props.actions.showModalForm}/>
         <Switch>
           <Route

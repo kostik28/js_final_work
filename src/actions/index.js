@@ -10,7 +10,8 @@ import {
   USER_INPUT_LOGIN_CHANGED,
   GET_USER_FAIL,
   GET_USER_LOADING,
-  GET_USER_SUCCESS
+  GET_USER_SUCCESS,
+  ON_LOGIN_ARRAY_SEARH
 } from '../constants'
 
 const actions = {
@@ -68,14 +69,20 @@ const actions = {
     };
   },
 
-  onLogin(loggedUser) {
+  onLoginArraySearch(foundUser) {
+    return {
+      type: ON_LOGIN_ARRAY_SEARH,
+      foundUser
+    };
+  },
+
+  onLogin(login) {
 
       return (dispatch, getStore) => {
         dispatch({
           type: GET_USER_LOADING
         });
-
-        fetch('http://localhost:3003/posts')
+        fetch('http://localhost:3003/users?login=' + login)
         .then(resp => resp.json())
         .then(data => {
           dispatch({
