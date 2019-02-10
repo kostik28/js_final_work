@@ -22,7 +22,11 @@ class ModalContainer extends React.Component {
       return <NewPost />
     } else if (this.props.loggedUser !== null
       && this.props.nameModalForm === 'Hi, ' + this.props.loggedUser.login) {
-      return <LoggedUser/>
+      return (
+        <LoggedUser
+          isOpenedModalForm={this.props.isOpenedModalForm}
+          onCloseModalForm={this.props.actions.onCloseModalForm}/>
+      )
     }
   }
 

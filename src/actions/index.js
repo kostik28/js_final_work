@@ -6,6 +6,7 @@ import {
   GET_POSTS_LOADING,
   GET_POSTS_SUCCESS,
   SHOW_MODAL_FORM,
+  CLOSE_MODAL_FORM,
   USER_INPUT_PASSWORD_CHANGED,
   USER_INPUT_LOGIN_CHANGED,
   GET_USER_FAIL,
@@ -66,6 +67,12 @@ const actions = {
     return {
       type: SHOW_MODAL_FORM,
       nameForm
+    };
+  },
+
+  onCloseModalForm() {
+    return {
+      type: CLOSE_MODAL_FORM
     };
   },
 

@@ -8,6 +8,7 @@ import {
   GET_POSTS_LOADING,
   GET_POSTS_SUCCESS,
   SHOW_MODAL_FORM,
+  CLOSE_MODAL_FORM,
   USER_INPUT_LOGIN_CHANGED,
   USER_INPUT_PASSWORD_CHANGED,
   ON_LOGIN_ARRAY_SEARH,
@@ -17,18 +18,18 @@ import {
 } from '../constants';
 
 export const initialState = {
-  users: [],
-  posts: [],
-  loggedUser: null,
-  messageToUser: null,
-  loginInputValue: null,
-  passwordInputValue: null,
-  isShowedButtonNewPost: false,
-  isShowedButtonEditPost: false,
-  isShowedButtonLikePost: false,
-  isOpenedModalForm: false,
-  isSavedDataForm: false,
-  nameModalForm: null,
+  users: [],                              // список пользователе
+  posts: [],                              // список постов
+  loggedUser: null,                       // залогинившийся пользователей
+  messageToUser: null,                    // сообщение пользователю о првильности ввода логина и пароля при входе
+  loginInputValue: null,                  // введенный пользователем логин
+  passwordInputValue: null,               // введенный пользователем пароль
+  isShowedButtonNewPost: false,           // показывать кнопку "Новый пост" (доступна только залогиненным пользователям)
+  isShowedButtonEditPost: false,          // показывать кнопку "Редактировать пост" (доступна пользователю в своего поста)
+  isShowedButtonLikePost: false,          // показывать кнопку лайканья поста (доступна для всех постов, кроме своего)
+  isOpenedModalForm: false,               // признак, что модальная форма открыта
+  isSavedDataForm: false,                 // признак, сохранять ли данные формы
+  nameModalForm: null,                    //
   error: null,
   isUserLoading: false,
   isUsersLoading: false,
@@ -94,6 +95,16 @@ const users = (state = initialState, action) =>{
         ...state,
         isOpenedModalForm: true,
         nameModalForm: nameForm,
+        messageToUser: null,
+        loginInputValue: null,
+        passwordInputValue: null
+      };
+
+    case CLOSE_MODAL_FORM:
+      return {
+        ...state,
+        isOpenedModalForm: false,
+        nameModalForm: null,
         messageToUser: null,
         loginInputValue: null,
         passwordInputValue: null
