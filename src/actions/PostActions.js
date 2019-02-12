@@ -1,9 +1,9 @@
 import * as types from '../constants/PostConstans'
 import callApi from '../api/FetchApi'
 
-export const onLoadPosts = () => dispatch => {
+export const onLoadPosts = () => async dispatch => {
 
-  const result = callApi('http://localhost:3003/posts');
+  const result = await callApi('http://localhost:3003/posts');
   if(result.isError) {
     dispatch(fetchPostsFail(result.error));
   }else {

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Link } from 'react-router-dom'
 
-import actions from '../../actions/index';
+import * as userActions from '../../actions/UserActions';
 
 class Users extends React.Component{
   constructor(props){
@@ -11,7 +11,7 @@ class Users extends React.Component{
   }
 
   componentDidMount() {
-    this.props.actions.getUsersList();
+    this.props.userActions.onLoadUsers();
   }
 
   render() {
@@ -36,14 +36,12 @@ class Users extends React.Component{
 
 }
 
-const mapStateToProps = state => {
-  return{
-    users: state.user.users
-  }
-};
+const mapStateToProps = state => ({
+    ...state.user
+});
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(actions, dispatch)
+  userActions: bindActionCreators(userActions, dispatch)
 });
 
 const Wrapped = connect(mapStateToProps, mapDispatchToProps)(Users);

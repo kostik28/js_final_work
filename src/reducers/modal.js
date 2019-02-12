@@ -5,7 +5,14 @@ const initialState = {
   loginInputValue: null,                  // введенный пользователем логин
   passwordInputValue: null,               // введенный пользователем пароль
   nameModal: null,                        // имя модальной формы ('search', 'login', 'new post')
-  isOpenedModalForm: false,               // признак, что модальная форма открыта
+  isOpenedModal: false,                   // признак, что модальная форма открыта
+  pages: [
+    {pageId: 0, name: 'login',  path: '',       modal: 'login'},
+    {pageId: 1, name: 'users',  path: '/users', modal: ''},
+    {pageId: 2, name: 'logo',   path: '/posts', modal: ''},
+    {pageId: 3, name: 'posts',  path: '/posts', modal: ''},
+    {pageId: 4, name: 'search', path: '',       modal: 'search'}
+  ]
 };
 
 const modal = (state = initialState, action) => {

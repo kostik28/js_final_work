@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { Link } from 'react-router-dom'
 
-import actions from '../../actions/index';
+import * as modalActions from '../../actions/ModalActions'
+import * as postActions from '../../actions/PostActions'
 
 class Posts extends React.Component{
   constructor(props){
@@ -11,7 +12,7 @@ class Posts extends React.Component{
   }
 
   componentDidMount() {
-    this.props.actions.getPostsList();
+    this.props.postActions.onLoadPosts();
   }
 
   render() {
@@ -19,7 +20,7 @@ class Posts extends React.Component{
       <div>
         <h4>Список постов</h4>
         <button
-          onClick={(e) => this.props.actions.showModalForm(e.target.innerHTML)}>
+          onClick={(e) => this.props.modalActions.openModalForm(e.target.innerHTML)}>
           new post
         </button>
         {
@@ -40,14 +41,13 @@ class Posts extends React.Component{
 
 }
 
-const mapStateToProps = state => {
-  return{
-    posts: state.user.posts
-  }
-};
+const mapStateToProps = state => ({
+  ...state.post
+});
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(actions, dispatch)
+  modalActions: bindActionCreators(modalActions, dispatch),
+  postActions:  bindActionCreators(postActions, dispatch)
 });
 
 const Wrapped = connect(mapStateToProps, mapDispatchToProps)(Posts);

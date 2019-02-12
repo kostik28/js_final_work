@@ -9,9 +9,10 @@ const initialState = {
 const user = (state = initialState, action) => {
   switch (action.type) {
     case types.FETCH_USERS_SUCCESS:
+      const { users } = action;
       return {
         ...state,
-        users: action.payload,
+        users,
         errorFetch: null,
       };
 

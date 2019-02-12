@@ -45,7 +45,7 @@ export default class Header extends React.Component {
 
     return(
       <li key={i}>
-        <a onClick={(e) => {this.props.showModalForm(e.target.innerHTML)}}>
+        <a onClick={(e) => {this.props.onOpenModal(e.target.innerHTML)}}>
           {linkName}
         </a>
       </li>

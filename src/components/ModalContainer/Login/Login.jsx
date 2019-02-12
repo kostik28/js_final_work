@@ -1,8 +1,9 @@
 import React from 'react'
 import {bindActionCreators} from "redux";
-import actions from "../../../actions";
 import {connect} from "react-redux";
 import Modal from "../LoggedUser/LoggedUser";
+
+import * as loginActions from '../../../actions/LoginActions'
 
 class Login extends React.Component {
   constructor(props) {
@@ -12,11 +13,11 @@ class Login extends React.Component {
 
   render() {
 
-    return(
+    return (
 
       <section>
         <Modal
-          visible={this.props.isOpenedModalForm}
+          visible={this.props.isOpenedModal}
           width="100%"
           height="100%"
           effect="fadeInUp"
@@ -30,7 +31,7 @@ class Login extends React.Component {
                 name='login'
                 autoComplete='on'
                 autoFocus
-                onChange={(e) => this.props.actions.saveLoginInputValue(e.target.value)}
+                onChange={(e) => this.props.loginActions.onChangedLogin(e.target.value)}
               />
               <label>
                 Password
@@ -38,7 +39,7 @@ class Login extends React.Component {
               <input
                 name='password'
                 type="password"
-                onChange={(e) => this.props.actions.savePasswordInputValue(e.target.value)}
+                onChange={(e) => this.props.loginActions.onChangedPassword(e.target.value)}
               />
             </div>
             {this.props.messageToUser !== null &&
@@ -52,32 +53,26 @@ class Login extends React.Component {
                 || this.props.loginInputValue.length <= 0
                 || this.props.passwordInputValue.length <= 0
               }
-              onClick={(e) =>{
-                const foundUser = this.props.users.find((user) => user.login === this.props.loginInputValue);
-                if (foundUser !== undefined) {
-                  this.props.actions.onLoginArraySearch(foundUser);
-                }else{
-                  this.props.actions.onLogin(this.props.loginInputValue);
-                }
-              }}>
-              login
+              onClick={(e) => {
+                this.props.loginActions.onLogin(this.props.loginInputValue)
+              }}
+            >login
             </button>
           </div>
         </Modal>
       </section>
     )
-
   }
-
-
 }
 
 const mapStateToProps = state => ({
-  ...state.user
+  ...state.user,
+  ...state.login,
+  ...state.modal
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(actions, dispatch)
+  loginActions: bindActionCreators(loginActions, dispatch),
 });
 
 const Wrapped = connect(mapStateToProps, mapDispatchToProps)(Login);

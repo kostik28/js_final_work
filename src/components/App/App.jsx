@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import actions from '../../actions/index'
+import * as modalActions from '../../actions/ModalActions'
 
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
@@ -21,13 +21,13 @@ class App extends React.Component {
     return (
       <div>
         {
-          this.props.isOpenedModalForm &&
+          this.props.isOpenedModal &&
           <ModalContainer />
         }
         <Header
           pages={this.props.pages}
           loggedUser={this.props.loggedUser}
-          showModalForm={this.props.actions.showModalForm}/>
+          onOpenModal={this.props.modalActions.onOpenModal}/>
         <Switch>
           <Route
             exact
@@ -68,11 +68,13 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  ...state.user
+  ...state.modal,
+  ...state.user,
+  ...state.post
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(actions, dispatch)
+  modalActions: bindActionCreators(modalActions, dispatch)
 });
 
 const Wrapped = connect(mapStateToProps, mapDispatchToProps)(App);

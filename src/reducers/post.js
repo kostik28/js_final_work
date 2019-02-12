@@ -8,6 +8,7 @@ const initialState = {
 const post = (state = initialState, action) => {
   switch (action.type) {
     case types.FETCH_POST_SUCCESS:
+      const { posts } = action;
       return {
         ...state,
         posts,

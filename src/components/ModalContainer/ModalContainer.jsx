@@ -1,7 +1,7 @@
 import React from 'react'
 import {bindActionCreators} from "redux";
-import actions from "../../actions";
 import {connect} from "react-redux";
+import * as modalActions from '../../actions/ModalActions'
 
 import Login from './Login/Login'
 import LoggedUser from './LoggedUser/LoggedUser'
@@ -14,18 +14,18 @@ class ModalContainer extends React.Component {
   }
 
   openModalForm() {
-    if (this.props.nameModalForm === 'search') {
+    if (this.props.nameModal === 'search') {
       return<Search />
-    }else if (this.props.nameModalForm === 'login') {
+    }else if (this.props.nameModal === 'login') {
       return <Login/>
-    } else if (this.props.nameModalForm === 'new post') {
+    } else if (this.props.nameModal === 'new post') {
       return <NewPost />
     } else if (this.props.loggedUser !== null
-      && this.props.nameModalForm === 'Hi, ' + this.props.loggedUser.login) {
+      && this.props.nameModal === 'Hi, ' + this.props.loggedUser.login) {
       return (
         <LoggedUser
-          isOpenedModalForm={this.props.isOpenedModalForm}
-          onCloseModalForm={this.props.actions.onCloseModalForm}/>
+          isOpenedModalForm={this.props.isOpenedModal}
+          onCloseModalForm={this.props.modalActions.onCloseModal}/>
       )
     }
   }
@@ -41,11 +41,12 @@ class ModalContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  ...state.user
+  ...state.user,
+  ...state.modal
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(actions, dispatch)
+  modalActions: bindActionCreators(modalActions, dispatch)
 });
 
 const Wrapped = connect(mapStateToProps, mapDispatchToProps)(ModalContainer);
