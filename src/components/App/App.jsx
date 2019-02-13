@@ -70,7 +70,8 @@ class App extends React.Component {
 const mapStateToProps = state => ({
   ...state.modal,
   ...state.user,
-  ...state.post
+  ...state.post,
+  ...state.login
 });
 
 const mapDispatchToProps = dispatch => ({

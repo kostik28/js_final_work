@@ -20,7 +20,7 @@ class Posts extends React.Component{
       <div>
         <h4>Список постов</h4>
         <button
-          onClick={(e) => this.props.modalActions.openModalForm(e.target.innerHTML)}>
+          onClick={(e) => this.props.modalActions.onOpenModal(e.target.innerHTML)}>
           new post
         </button>
         {

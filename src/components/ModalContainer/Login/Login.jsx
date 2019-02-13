@@ -1,7 +1,7 @@
 import React from 'react'
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
-import Modal from "../LoggedUser/LoggedUser";
+import Modal from 'react-awesome-modal'
 
 import * as loginActions from '../../../actions/LoginActions'
 
@@ -12,14 +12,13 @@ class Login extends React.Component {
 
 
   render() {
-
     return (
 
       <section>
         <Modal
           visible={this.props.isOpenedModal}
-          width="100%"
-          height="100%"
+          width="400"
+          height="300"
           effect="fadeInUp"
         >
           <div>
@@ -29,7 +28,6 @@ class Login extends React.Component {
               </label>
               <input
                 name='login'
-                autoComplete='on'
                 autoFocus
                 onChange={(e) => this.props.loginActions.onChangedLogin(e.target.value)}
               />
@@ -42,17 +40,11 @@ class Login extends React.Component {
                 onChange={(e) => this.props.loginActions.onChangedPassword(e.target.value)}
               />
             </div>
-            {this.props.messageToUser !== null &&
-            <div>
-              {this.props.messageToUser}
-            </div>}
+            {this.props.messageToUser !== null
+              &&
+            <div>{this.props.messageToUser}</div>}
             <button
-              disabled={
-                this.props.loginInputValue === null
-                || this.props.passwordInputValue === null
-                || this.props.loginInputValue.length <= 0
-                || this.props.passwordInputValue.length <= 0
-              }
+
               onClick={(e) => {
                 this.props.loginActions.onLogin(this.props.loginInputValue)
               }}
@@ -66,9 +58,8 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  ...state.user,
   ...state.login,
-  ...state.modal
+  ...state.modal,
 });
 
 const mapDispatchToProps = dispatch => ({

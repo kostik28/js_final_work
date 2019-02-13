@@ -1,9 +1,6 @@
 import * as types from '../constants/ModalConstans'
 
 const initialState = {
-  messageToUser: null,                    // сообщение пользователю о првильности ввода логина и пароля при входе
-  loginInputValue: null,                  // введенный пользователем логин
-  passwordInputValue: null,               // введенный пользователем пароль
   nameModal: null,                        // имя модальной формы ('search', 'login', 'new post')
   isOpenedModal: false,                   // признак, что модальная форма открыта
   pages: [

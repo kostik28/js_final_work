@@ -2,7 +2,6 @@ import * as types from '../constants/UserConstans'
 
 const initialState = {
   users: [],                              // список пользователей
-  loggedUser: null,                       // залогинившийся пользователей
   errorFetch: null,
 };
 
@@ -21,14 +20,6 @@ const user = (state = initialState, action) => {
         ...state,
         users: [],
         errorFetch: action.error
-      };
-
-    case types.FETCH_USER_SUCCESS:
-
-      return {
-        ...state,
-        loggedUser,
-        errorFetch: null,
       };
 
     case types.FETCH_USER_FAIL:

@@ -3,6 +3,8 @@ import * as types from '../constants/LoginConstans'
 const initialState = {
   loginInputValue: null,                  // введенный пользователем логин
   passwordInputValue: null,               // введенный пользователем пароль
+  loggedUser: null,                       // залогинившийся пользователей
+  messageToUser: null,                    // сообщение пользователю о првильности ввода логина и пароля при входе
 };
 
 const login = (state = initialState, action) => {

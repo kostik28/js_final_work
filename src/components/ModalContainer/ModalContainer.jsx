@@ -9,23 +9,27 @@ import NewPost from './NewPost/NewPost'
 import Search from './Search/Search'
 
 class ModalContainer extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props)
   }
 
   openModalForm() {
     if (this.props.nameModal === 'search') {
-      return<Search />
-    }else if (this.props.nameModal === 'login') {
+      return (
+        <Search
+          isOpenedModal={this.props.isOpenedModal}
+          onCloseModal={this.props.modalActions.onCloseModal}/>
+      )
+    } else if (this.props.nameModal === 'login') {
       return <Login/>
     } else if (this.props.nameModal === 'new post') {
-      return <NewPost />
+      return <NewPost/>
     } else if (this.props.loggedUser !== null
       && this.props.nameModal === 'Hi, ' + this.props.loggedUser.login) {
       return (
         <LoggedUser
-          isOpenedModalForm={this.props.isOpenedModal}
-          onCloseModalForm={this.props.modalActions.onCloseModal}/>
+          isOpenedModal={this.props.isOpenedModal}
+          onCloseModal={this.props.modalActions.onCloseModal}/>
       )
     }
   }
@@ -37,12 +41,11 @@ class ModalContainer extends React.Component {
       </div>
     )
   }
-
 }
 
 const mapStateToProps = state => ({
-  ...state.user,
-  ...state.modal
+  ...state.modal,
+  ...state.login
 });
 
 const mapDispatchToProps = dispatch => ({
