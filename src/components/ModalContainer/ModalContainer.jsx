@@ -2,6 +2,7 @@ import React from 'react'
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import * as modalActions from '../../actions/ModalActions'
+import * as loginActions from '../../actions/LoginActions'
 
 import Login from './Login/Login'
 import LoggedUser from './LoggedUser/LoggedUser'
@@ -21,7 +22,17 @@ class ModalContainer extends React.Component {
           onCloseModal={this.props.modalActions.onCloseModal}/>
       )
     } else if (this.props.nameModal === 'login') {
-      return <Login/>
+      return (
+        <Login
+          isOpenedModal={this.props.isOpenedModal}
+          onCloseModal={this.props.modalActions.onCloseModal}
+          onChangedLogin={this.props.loginActions.onChangedLogin}
+          onChangedPassword={this.props.loginActions.onChangedPassword}
+          messageToUser={this.props.messageToUser}
+          onLogin={this.props.loginActions.onLogin}
+          loginInputValue={this.props.loginInputValue}
+        />
+        )
     } else if (this.props.nameModal === 'new post') {
       return <NewPost/>
     } else if (this.props.loggedUser !== null
@@ -49,7 +60,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  modalActions: bindActionCreators(modalActions, dispatch)
+  modalActions: bindActionCreators(modalActions, dispatch),
+  loginActions: bindActionCreators(loginActions, dispatch)
 });
 
 const Wrapped = connect(mapStateToProps, mapDispatchToProps)(ModalContainer);

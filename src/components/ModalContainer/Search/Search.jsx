@@ -1,5 +1,7 @@
 import React from 'react'
-import Modal from 'react-awesome-modal'
+import Modal from 'react-modal'
+
+Modal.setAppElement('#modal');
 
 export default (props) => {
   console.log(props);
@@ -7,16 +9,13 @@ export default (props) => {
     <section>
       <h1>React-Modal Examples</h1>
       <Modal
-        visible={props.isOpenedModal}
-        width="400"
-        height="300"
-        effect="fadeInUp"
+        isOpen={props.isOpenedModal}
         onClickAway={props.onCloseModal}
       >
         <div>
           <h1>Title</h1>
           <p>Some Contents</p>
-          <a href="javascript:void(0);" onClick={props.onCloseModal}>Close</a>
+          <button onClick={props.onCloseModal}>Close Modal</button>
         </div>
       </Modal>
     </section>

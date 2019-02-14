@@ -1,25 +1,20 @@
 import React from 'react'
-import {bindActionCreators} from "redux";
-import {connect} from "react-redux";
-import Modal from 'react-awesome-modal'
+import Modal from 'react-modal'
 
-import * as loginActions from '../../../actions/LoginActions'
+Modal.setAppElement('#modal');
 
-class Login extends React.Component {
+export default class Login extends React.Component {
   constructor(props) {
     super(props)
   }
-
 
   render() {
     return (
 
       <section>
         <Modal
-          visible={this.props.isOpenedModal}
-          width="400"
-          height="300"
-          effect="fadeInUp"
+          isOpen={this.props.isOpenedModal}
+          onClickAway={this.props.onCloseModal}
         >
           <div>
             <div>
@@ -29,7 +24,7 @@ class Login extends React.Component {
               <input
                 name='login'
                 autoFocus
-                onChange={(e) => this.props.loginActions.onChangedLogin(e.target.value)}
+                onChange={(e) => this.props.onChangedLogin(e.target.value)}
               />
               <label>
                 Password
@@ -37,7 +32,7 @@ class Login extends React.Component {
               <input
                 name='password'
                 type="password"
-                onChange={(e) => this.props.loginActions.onChangedPassword(e.target.value)}
+                onChange={(e) => this.props.onChangedPassword(e.target.value)}
               />
             </div>
             {this.props.messageToUser !== null
@@ -46,26 +41,14 @@ class Login extends React.Component {
             <button
 
               onClick={(e) => {
-                this.props.loginActions.onLogin(this.props.loginInputValue)
+                this.props.onLogin(this.props.loginInputValue)
               }}
             >login
             </button>
+            <button onClick={this.props.onCloseModal}>Close Modal</button>
           </div>
         </Modal>
       </section>
     )
   }
 }
-
-const mapStateToProps = state => ({
-  ...state.login,
-  ...state.modal,
-});
-
-const mapDispatchToProps = dispatch => ({
-  loginActions: bindActionCreators(loginActions, dispatch),
-});
-
-const Wrapped = connect(mapStateToProps, mapDispatchToProps)(Login);
-
-export default Wrapped;
