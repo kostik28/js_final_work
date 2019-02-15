@@ -31,10 +31,15 @@ class ModalContainer extends React.Component {
           messageToUser={this.props.messageToUser}
           onLogin={this.props.loginActions.onLogin}
           loginInputValue={this.props.loginInputValue}
+          passwordInputValue={this.props.passwordInputValue}
         />
         )
     } else if (this.props.nameModal === 'new post') {
-      return <NewPost/>
+      return (
+        <NewPost
+          isOpenedModal={this.props.isOpenedModal}
+          onCloseModal={this.props.modalActions.onCloseModal} />
+        )
     } else if (this.props.loggedUser !== null
       && this.props.nameModal === 'Hi, ' + this.props.loggedUser.login) {
       return (

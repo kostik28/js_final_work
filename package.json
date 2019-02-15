@@ -44,7 +44,6 @@
     "react-dom": "^16.6.3",
     "react-modal": "^3.8.1",
     "react-redux": "^6.0.0",
-    "react-responsive-modal": "^3.6.0",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",

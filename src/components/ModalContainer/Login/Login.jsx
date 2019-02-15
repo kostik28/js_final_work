@@ -3,52 +3,53 @@ import Modal from 'react-modal'
 
 Modal.setAppElement('#modal');
 
-export default class Login extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+export default (props) => {
 
-  render() {
-    return (
+  return (
 
-      <section>
-        <Modal
-          isOpen={this.props.isOpenedModal}
-          onClickAway={this.props.onCloseModal}
-        >
+    <section>
+      <Modal
+        isOpen={props.isOpenedModal}
+        onClickAway={props.onCloseModal}
+      >
+        <div>
           <div>
-            <div>
-              <label>
-                Login
-              </label>
-              <input
-                name='login'
-                autoFocus
-                onChange={(e) => this.props.onChangedLogin(e.target.value)}
-              />
-              <label>
-                Password
-              </label>
-              <input
-                name='password'
-                type="password"
-                onChange={(e) => this.props.onChangedPassword(e.target.value)}
-              />
-            </div>
-            {this.props.messageToUser !== null
-              &&
-            <div>{this.props.messageToUser}</div>}
-            <button
-
-              onClick={(e) => {
-                this.props.onLogin(this.props.loginInputValue)
-              }}
-            >login
-            </button>
-            <button onClick={this.props.onCloseModal}>Close Modal</button>
+            <label>
+              Login
+            </label>
+            <input
+              name='login'
+              autoFocus
+              onChange={(e) => props.onChangedLogin(e.target.value)}
+            />
+            <label>
+              Password
+            </label>
+            <input
+              name='password'
+              type="password"
+              onChange={(e) => props.onChangedPassword(e.target.value)}
+            />
           </div>
-        </Modal>
-      </section>
-    )
-  }
+          {props.messageToUser !== null
+          &&
+          <div>{props.messageToUser}</div>}
+          <button
+            disabled={
+              props.passwordInputValue === null
+              || props.loginInputValue === null
+              || props.passwordInputValue.length <= 0
+              || props.loginInputValue.length <= 0}
+            onClick={(e) => {
+              props.onLogin(props.loginInputValue)
+            }}
+          >login
+          </button>
+          <button onClick={props.onCloseModal}>Close Modal</button>
+        </div>
+      </Modal>
+    </section>
+
+  )
+
 }

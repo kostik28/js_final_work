@@ -1,5 +1,6 @@
 import * as types from '../constants/LoginConstans'
 import { fetchUserFail } from '../actions/UserActions'
+import { onCloseModal } from '../actions/ModalActions'
 import callApi from "../api/FetchApi";
 
 export const onChangedLogin = login => ({ type: types.USER_INPUT_LOGIN_CHANGED, login });
@@ -34,6 +35,7 @@ const checkCorrectPassword = (user, password) => dispatch => {
 
   if(user.password === password) {
     dispatch(onLoginUser({ loggedUser: user, messageToUser: null }));
+    dispatch(onCloseModal());
   }else {
     dispatch(onLoginUser({ loggedUser: null, messageToUser: 'The password is incorrect' }));
   }

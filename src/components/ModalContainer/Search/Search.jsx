@@ -4,7 +4,6 @@ import Modal from 'react-modal'
 Modal.setAppElement('#modal');
 
 export default (props) => {
-  console.log(props);
   return (
     <section>
       <h1>React-Modal Examples</h1>
