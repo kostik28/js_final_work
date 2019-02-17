@@ -1,5 +1,6 @@
-import * as types from '../constants/PostConstans'
+import * as types from '../constants/PostConstants'
 import callApi from '../api/FetchApi'
+import { searchUserById, onLoadUser } from '../actions/UserActions'
 
 export const onLoadPosts = () => async dispatch => {
 
@@ -12,6 +13,22 @@ export const onLoadPosts = () => async dispatch => {
 
 };
 
+// export const onClickPost = idUser => (dispatch, getState) => {
+//
+//   const state = getState();
+//   const users = state.user.users;
+//   const searchUser = searchUserById(users, idUser);
+//   if (searchUser === undefined) {
+//     onLoadUser(idUser);
+//   } else {
+//     dispatch(onClickingPost(searchUser));
+//   }
+//
+// };
+
+
 const fetchPostsSuccess = posts => ({ type: types.FETCH_POST_SUCCESS, posts });
 
 const fetchPostsFail = errorFetch => ({ type: types.FETCH_POST_FAIL, errorFetch });
+
+// export const onClickingPost = userPost => ({ type: types.CLICK_POST, userPost });

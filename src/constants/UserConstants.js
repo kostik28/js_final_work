@@ -2,3 +2,5 @@ export const FETCH_USERS_SUCCESS = 'FETCH_USERS_SUCCESS';
 export const FETCH_USERS_FAIL = 'FETCH_USERS_FAIL';
 
 export const FETCH_USER_FAIL = 'FETCH_USER_FAIL';
+
+export const LOGGED_USER = 'LOGGED_USER';

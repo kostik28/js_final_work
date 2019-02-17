@@ -1,8 +1,9 @@
-import * as types from '../constants/UserConstans'
+import * as types from "../constants/UserConstants";
+import { CLICK_POST } from '../constants/PostConstants'
 
 const initialState = {
   users: [],                              // список пользователей
-  errorFetch: null,
+  errorUserFetch: null,
 };
 
 const user = (state = initialState, action) => {
@@ -12,21 +13,20 @@ const user = (state = initialState, action) => {
       return {
         ...state,
         users,
-        errorFetch: null,
+        errorUserFetch: null,
       };
 
     case types.FETCH_USERS_FAIL:
       return {
         ...state,
         users: [],
-        errorFetch: action.error
+        errorUserFetch: action.error
       };
 
     case types.FETCH_USER_FAIL:
       return {
         ...state,
-        loggedUser: null,
-        errorFetch
+        errorUserFetch
       };
 
     default:

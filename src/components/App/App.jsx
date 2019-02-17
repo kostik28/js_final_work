@@ -3,6 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as modalActions from '../../actions/ModalActions'
+import * as postActions from '../../actions/PostActions'
 
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
@@ -44,7 +45,10 @@ class App extends React.Component {
               const selectedPost = this.props.posts.find((post) => post.id === postId);
               const nextPost = this.props.posts.find((post) => post.id === postId + 1);
               const prevPost = this.props.posts.find((post) => post.id === postId - 1);
-              return <Post selectedPost={selectedPost} nextPost={nextPost} prevPost={prevPost} />
+              return <Post
+                      selectedPost={selectedPost}
+                      nextPost={nextPost}
+                      prevPost={prevPost} />
             }}
           />
           <Route
@@ -75,7 +79,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  modalActions: bindActionCreators(modalActions, dispatch)
+  modalActions: bindActionCreators(modalActions, dispatch),
+  postActions: bindActionCreators(postActions, dispatch)
 });
 
 const Wrapped = connect(mapStateToProps, mapDispatchToProps)(App);

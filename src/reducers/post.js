@@ -1,8 +1,9 @@
-import * as types from '../constants/PostConstans'
+import * as types from "../constants/PostConstants";
 
 const initialState = {
   posts: [],                              // список постов
-  errorFetch: null,
+  userPost: null,
+  errorPostFetch: null,
 };
 
 const post = (state = initialState, action) => {
@@ -12,15 +13,22 @@ const post = (state = initialState, action) => {
       return {
         ...state,
         posts,
-        errorFetch: null,
+        errorPostFetch: null,
       };
 
     case types.FETCH_POST_FAIL:
       return {
         ...state,
         posts: [],
-        errorFetch
+        errorPostFetch
       };
+
+    // case types.CLICK_POST:
+    //   const { userPost } = action;
+    //   return {
+    //     ...state,
+    //     userPost
+    //   };
 
     default:
       return state;

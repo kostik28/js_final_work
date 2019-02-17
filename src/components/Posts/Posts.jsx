@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 
 import * as modalActions from '../../actions/ModalActions'
 import * as postActions from '../../actions/PostActions'
+import * as userActions from '../../actions/UserActions'
 
 class Posts extends React.Component{
   constructor(props){
@@ -13,6 +14,7 @@ class Posts extends React.Component{
 
   componentDidMount() {
     this.props.postActions.onLoadPosts();
+    this.props.userActions.onLoadUsers();
   }
 
   render() {
@@ -28,7 +30,9 @@ class Posts extends React.Component{
             return (
               <div key={i}>
                 <p>{post.id}, email: {post.title}</p>
-                <Link to={'/posts/' + post.id}>
+                <Link
+                  to={'/posts/' + post.id}
+                >
                   перейти к посту
                 </Link>
               </div>
@@ -47,7 +51,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   modalActions: bindActionCreators(modalActions, dispatch),
-  postActions:  bindActionCreators(postActions, dispatch)
+  postActions: bindActionCreators(postActions, dispatch),
+  userActions: bindActionCreators(userActions, dispatch)
 });
 
 const Wrapped = connect(mapStateToProps, mapDispatchToProps)(Posts);

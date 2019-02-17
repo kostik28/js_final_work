@@ -1,4 +1,4 @@
-import * as types from '../constants/LoginConstans'
+import * as types from '../constants/LoginConstants'
 
 const initialState = {
   loginInputValue: null,                  // введенный пользователем логин
@@ -24,10 +24,16 @@ const login = (state = initialState, action) => {
       };
 
     case types.USER_LOGIN:
-      const { loggedUser, messageToUser } = action.payload;
+      const { loggedUser } = action;
       return {
         ...state,
-        loggedUser,
+        loggedUser
+      };
+
+    case types.USER_LOGIN_MASSAGE:
+      const { messageToUser } = action;
+      return {
+        ...state,
         messageToUser
       };
 

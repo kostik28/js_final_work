@@ -1,7 +1,6 @@
-import * as types from '../constants/LoginConstans'
-import { fetchUserFail } from '../actions/UserActions'
+import * as types from '../constants/LoginConstants'
 import { onCloseModal } from '../actions/ModalActions'
-import callApi from "../api/FetchApi";
+import { searchUserByLogin } from '../actions/UserActions'
 
 export const onChangedLogin = login => ({ type: types.USER_INPUT_LOGIN_CHANGED, login });
 
@@ -11,35 +10,30 @@ export const onLogin = () => async (dispatch, getState) => {
 
   const state = getState();
   const login = state.login;
-  const foundUser = state.user.users.find((user) => user.login === login.loginInputValue);
+  const searchUser = searchUserByLogin(state.user.users, login.loginInputValue);
 
-  if (foundUser !== undefined) {
-    dispatch(checkCorrectPassword(foundUser, login));
-  }else {
-    const result = await callApi('http://localhost:3003/users?login=' + login.loginInputValue);
-    if(result.isError) {
-      dispatch(fetchUserFail(result.error));
-    }else {
-      const loggedUser = result.data.length === 0 ? null : result.data[0];
-      if (loggedUser === null) {
-        dispatch(onLoginUser({ loggedUser: null, messageToUser: 'The login is incorrect' }));
-      }else {
-        dispatch(checkCorrectPassword(loggedUser, login.passwordInputValue));
-      }
-    }
+  if (searchUser !== undefined) {
+    dispatch(checkCorrectPassword(searchUser, login.passwordInputValue));
+  } else {
+    dispatch(onLoginUser(null));
+    dispatch(onLoginUserMassage('The login is incorrect'));
   }
-
 };
 
 const checkCorrectPassword = (user, password) => dispatch => {
 
   if(user.password === password) {
-    dispatch(onLoginUser({ loggedUser: user, messageToUser: null }));
+    dispatch(onLoginUser(user));
+    dispatch(onLoginUserMassage(null));
     dispatch(onCloseModal());
   }else {
-    dispatch(onLoginUser({ loggedUser: null, messageToUser: 'The password is incorrect' }));
+    console.log('searchUser');
+    dispatch(onLoginUser(null));
+    dispatch(onLoginUserMassage('The password is incorrect'));
   }
 
 };
 
-const onLoginUser = payload => ({ type: types.USER_LOGIN, payload });
+const onLoginUser = loggedUser => ({ type: types.USER_LOGIN, loggedUser });
+
+export const onLoginUserMassage = messageToUser => ({ type: types.USER_LOGIN_MASSAGE, messageToUser });

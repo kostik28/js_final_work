@@ -1,4 +1,4 @@
-import * as types from '../constants/ModalConstans'
+import * as types from '../constants/ModalConstants'
 
 const initialState = {
   nameModal: null,                        // имя модальной формы ('search', 'login', 'new post')
@@ -20,7 +20,6 @@ const modal = (state = initialState, action) => {
         ...state,
         isOpenedModal: true,
         nameModal: nameForm,
-        messageToUser: null,
         loginInputValue: null,
         passwordInputValue: null
       };
@@ -30,7 +29,6 @@ const modal = (state = initialState, action) => {
         ...state,
         isOpenedModal: false,
         nameModal: null,
-        messageToUser: null,
         loginInputValue: null,
         passwordInputValue: null
       };
