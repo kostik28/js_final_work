@@ -42,22 +42,38 @@ class Post extends React.Component {
     const postAuthor = this.props.users.find(user => user.id === selectedPost.idUser);
     return (
       <div>
+        <Uploader/>
         <p>title: {selectedPost.title}</p>
-        <p>text: {selectedPost.body}</p>
-        <Link to={'/users/' + postAuthor.id}><button>{postAuthor.login}</button></Link>
+        <Link
+          to={'/users/' + postAuthor.id}
+        >
+          <button>
+            {postAuthor.login}
+          </button>
+        </Link>
+
         <button
           disabled={this.props.loggedUser === null || this.props.loggedUser === postAuthor}
           onClick={(e) => this.putLike(e.target)}
-        >{selectedPost.likes.length + ' likes'}</button>
-        <button>edit</button>
+        >
+          {selectedPost.likes.length + ' likes'}
+        </button>
+
+        {this.props.loggedUser !== null && this.props.loggedUser === postAuthor &&
+          <button>edit</button>
+        }
+
         <div>
           <div>{this.displayImages(selectedPost.images, 0, counter)}</div>
           <div>{this.displayImages(selectedPost.images, 1, counter)}</div>
         </div>
-        <div>{selectedPost.text}</div>
+
+        <p>text: {selectedPost.body}</p>
+
         <Link to='/posts'>перейти назад</Link>
         <div>{this.props.nextPost !== undefined && <Link to={'/posts/' + this.props.nextPost.id}>Вперед</Link>}</div>
         <div>{this.props.prevPost !== undefined && <Link to={'/posts/' + this.props.prevPost.id}>Назад</Link>}</div>
+
       </div>
     );
   }
