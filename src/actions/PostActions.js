@@ -1,34 +1,42 @@
 import * as types from '../constants/PostConstants'
 import callApi from '../api/FetchApi'
-import { searchUserById, onLoadUser } from '../actions/UserActions'
+import {onLoadUser} from '../actions/UserActions'
 
-export const onLoadPosts = () => async dispatch => {
+export const onLoadPosts = () => async (dispatch, setState) => {
 
   const result = await callApi('http://localhost:3003/posts');
   if(result.isError) {
     dispatch(fetchPostsFail(result.error));
   }else {
-    dispatch(fetchPostsSuccess(result.data));
+    const state = setState();
+    const arr = [...state.post.posts];
+    for (let i = 0; result.data.length > i; i++) {
+      if(arr.find(post => post.id === result.data[i].id) === undefined){
+        arr.push(result.data[i]);
+      }
+    }
+
+    arr.sort(sortById);
+    dispatch(fetchPostsSuccess(arr));
   }
 
 };
 
-// export const onClickPost = idUser => (dispatch, getState) => {
-//
-//   const state = getState();
-//   const users = state.user.users;
-//   const searchUser = searchUserById(users, idUser);
-//   if (searchUser === undefined) {
-//     onLoadUser(idUser);
-//   } else {
-//     dispatch(onClickingPost(searchUser));
-//   }
-//
-// };
+export const setPosts = post => (dispatch, setState) => {
+  const state = setState();
+  const posts = state.post.posts;
+  const arr = posts.filter(item => item.id !== post.id);
+  arr.push(post);
 
+  arr.sort(sortById);
+  dispatch(fetchPostsSuccess(arr));
+};
 
 const fetchPostsSuccess = posts => ({ type: types.FETCH_POST_SUCCESS, posts });
 
 const fetchPostsFail = errorFetch => ({ type: types.FETCH_POST_FAIL, errorFetch });
 
-// export const onClickingPost = userPost => ({ type: types.CLICK_POST, userPost });
+const sortById = (obj_1, obj_2) => {
+  if (obj_1.id > obj_2.id) return 1;
+  if (obj_1.id < obj_2.id) return -1;
+};

@@ -23,13 +23,6 @@ const post = (state = initialState, action) => {
         errorPostFetch
       };
 
-    // case types.CLICK_POST:
-    //   const { userPost } = action;
-    //   return {
-    //     ...state,
-    //     userPost
-    //   };
-
     default:
       return state;
   }

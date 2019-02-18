@@ -23,17 +23,32 @@ class Post extends React.Component {
     return () => currentCount++
   };
 
+  putLike(elem) {
+    const post = this.props.selectedPost;
+    const user = this.props.loggedUser;
+    const searchId = post.likes.find(id => id === user.id);
+    if (searchId === undefined) {
+      post.likes.push(user.id);
+    } else {
+      post.likes = post.likes.filter(id => id !== user.id);
+    }
+    elem.innerHTML = post.likes.length + ' likes';
+    this.props.postActions.setPosts(post);
+  };
+
   render() {
     const selectedPost = this.props.selectedPost;
     const counter = this.makeCounter();
-    const postAuthor = this.props.users.filter(user => user.id === selectedPost.idUser);
-    console.log(this.props);
+    const postAuthor = this.props.users.find(user => user.id === selectedPost.idUser);
     return (
       <div>
         <p>title: {selectedPost.title}</p>
+        <p>text: {selectedPost.body}</p>
         <Link to={'/users/' + postAuthor.id}><button>{postAuthor.login}</button></Link>
-        {this.props.loggedUser === postAuthor
-          && <button>{selectedPost.likes.length + ' likes'}</button>}
+        <button
+          disabled={this.props.loggedUser === null || this.props.loggedUser === postAuthor}
+          onClick={(e) => this.putLike(e.target)}
+        >{selectedPost.likes.length + ' likes'}</button>
         <button>edit</button>
         <div>
           <div>{this.displayImages(selectedPost.images, 0, counter)}</div>
