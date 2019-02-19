@@ -34,11 +34,14 @@ class ModalContainer extends React.Component {
           passwordInputValue={this.props.passwordInputValue}
         />
         )
-    } else if (this.props.nameModal === 'new post') {
+    } else if (this.props.nameModal === 'new post'
+        || this.props.nameModal === 'edit') {
       return (
         <NewPost
           isOpenedModal={this.props.isOpenedModal}
-          onCloseModal={this.props.modalActions.onCloseModal} />
+          onCloseModal={this.props.modalActions.onCloseModal}
+          selectedPost={this.props.selectedPost}
+          loggedUser={this.props.loggedUser}/>
         )
     } else if (this.props.loggedUser !== null
       && this.props.nameModal === 'Hi, ' + this.props.loggedUser.login) {
@@ -61,7 +64,8 @@ class ModalContainer extends React.Component {
 
 const mapStateToProps = state => ({
   ...state.modal,
-  ...state.login
+  ...state.login,
+  ...state.post
 });
 
 const mapDispatchToProps = dispatch => ({

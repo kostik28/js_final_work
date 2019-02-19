@@ -4,6 +4,7 @@ const initialState = {
   posts: [],                              // список постов
   userPost: null,
   errorPostFetch: null,
+  selectedPost: null
 };
 
 const post = (state = initialState, action) => {
@@ -21,6 +22,13 @@ const post = (state = initialState, action) => {
         ...state,
         posts: [],
         errorPostFetch
+      };
+
+    case types.SET_SELECTED_POST:
+      const { selectedPost } = action;
+      return {
+        ...state,
+        selectedPost
       };
 
     default:

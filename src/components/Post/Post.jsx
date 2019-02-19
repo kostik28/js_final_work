@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 import {bindActionCreators} from "redux";
 import * as postActions from "../../actions/PostActions";
+import * as modalActions from "../../actions/ModalActions";
 import {connect} from "react-redux";
 
 class Post extends React.Component {
@@ -43,6 +44,7 @@ class Post extends React.Component {
     return (
       <div>
         <p>title: {selectedPost.title}</p>
+        <p>text: {selectedPost.body}</p>
         <Link
           to={'/users/' + postAuthor.id}
         >
@@ -59,15 +61,15 @@ class Post extends React.Component {
         </button>
 
         {this.props.loggedUser !== null && this.props.loggedUser.id === postAuthor.id &&
-          <button>edit</button>
+          <button
+            onClick={(e) => this.props.modalActions.onOpenModal(e.target.innerHTML, selectedPost)}
+          >edit</button>
         }
 
         <div>
           <div>{this.displayImages(selectedPost.images, 0, counter)}</div>
           <div>{this.displayImages(selectedPost.images, 1, counter)}</div>
         </div>
-
-        <p>text: {selectedPost.body}</p>
 
         <Link to='/posts'>перейти назад</Link>
         <div>{this.props.nextPost !== undefined && <Link to={'/posts/' + this.props.nextPost.id}>Вперед</Link>}</div>
@@ -84,7 +86,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  postActions: bindActionCreators(postActions, dispatch)
+  postActions: bindActionCreators(postActions, dispatch),
+  modalActions: bindActionCreators(modalActions, dispatch)
 });
 
 const Wrapped = connect(mapStateToProps, mapDispatchToProps)(Post);

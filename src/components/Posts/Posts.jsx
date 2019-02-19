@@ -21,10 +21,11 @@ class Posts extends React.Component{
     return(
       <div>
         <h4>Список постов</h4>
-        <button
-          onClick={(e) => this.props.modalActions.onOpenModal(e.target.innerHTML)}>
-          new post
-        </button>
+        {this.props.loggedUser !== null &&
+          <button
+            onClick={(e) => this.props.modalActions.onOpenModal(e.target.innerHTML)}>
+            new post
+          </button>}
         {
           this.props.posts.map((post, i) => {
             return (
@@ -46,7 +47,8 @@ class Posts extends React.Component{
 }
 
 const mapStateToProps = state => ({
-  ...state.post
+  ...state.post,
+  ...state.login
 });
 
 const mapDispatchToProps = dispatch => ({
