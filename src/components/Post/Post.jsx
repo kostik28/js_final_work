@@ -42,7 +42,6 @@ class Post extends React.Component {
     const postAuthor = this.props.users.find(user => user.id === selectedPost.idUser);
     return (
       <div>
-        <Uploader/>
         <p>title: {selectedPost.title}</p>
         <Link
           to={'/users/' + postAuthor.id}
@@ -53,13 +52,13 @@ class Post extends React.Component {
         </Link>
 
         <button
-          disabled={this.props.loggedUser === null || this.props.loggedUser === postAuthor}
+          disabled={this.props.loggedUser === null || this.props.loggedUser.id === postAuthor.id}
           onClick={(e) => this.putLike(e.target)}
         >
           {selectedPost.likes.length + ' likes'}
         </button>
 
-        {this.props.loggedUser !== null && this.props.loggedUser === postAuthor &&
+        {this.props.loggedUser !== null && this.props.loggedUser.id === postAuthor.id &&
           <button>edit</button>
         }
 
