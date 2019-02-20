@@ -1,10 +1,15 @@
 import * as types from '../constants/ModalConstants'
 import { onLoginUserMassage } from '../actions/LoginActions'
-import { setSelectedPost } from '../actions/PostActions'
+import { setSelectedPost, onChangedText, onChangedTitle, setModifiedForm } from '../actions/PostActions'
 
 export const onOpenModal = (nameForm, post = null) => dispatch => {
   if (nameForm === 'new post' || nameForm === 'edit') {
     dispatch(setSelectedPost(post));
+    if (post !== null) {
+      dispatch(onChangedTitle(post.title));
+      dispatch(onChangedText(post.body));
+      dispatch(setModifiedForm(false));
+    }
   }
 
   dispatch(onLoginUserMassage(null));

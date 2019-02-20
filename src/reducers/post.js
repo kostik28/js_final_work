@@ -4,7 +4,10 @@ const initialState = {
   posts: [],                              // список постов
   userPost: null,
   errorPostFetch: null,
-  selectedPost: null
+  selectedPost: null,
+  titleInputValue: '',
+  textInputValue: '',
+  isModifiedForm: false
 };
 
 const post = (state = initialState, action) => {
@@ -29,6 +32,29 @@ const post = (state = initialState, action) => {
       return {
         ...state,
         selectedPost
+      };
+
+    case types.USER_INPUT_TITLE_CHANGED:
+      const { title } = action;
+      return {
+        ...state,
+        titleInputValue: title.length > 0 ? title : '',
+        isModifiedForm: true
+      };
+
+    case types.USER_INPUT_TEXT_CHANGED:
+      const { text } = action;
+      return {
+        ...state,
+        textInputValue: text.length > 0 ? text : '',
+        isModifiedForm: true
+      };
+
+    case types.SET_MODIFIED_FORM:
+      const { isModifiedForm } = action;
+      return {
+        ...state,
+        isModifiedForm
       };
 
     default:

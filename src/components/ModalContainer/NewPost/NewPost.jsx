@@ -4,6 +4,7 @@ import Modal from 'react-modal'
 Modal.setAppElement('#modal');
 
 export default (props) => {
+  console.log(props);
   return (
     <section>
       <Modal
@@ -13,27 +14,29 @@ export default (props) => {
         <div>
           <h2>{'Hi, ' + props.loggedUser.login}</h2>
           <form>
-            <label htmlFor='title'>
+            <label>
               Title
             </label>
             <input
-              name='title'
-              value={getValue(props.selectedPost, 'title')}
-            />
-            <label htmlFor='text'>
+              value={props.titleInputValue}
+              onChange={(e) => props.onChangedTitle(e.target.value)} />
+            <label>
               Text
             </label>
             <textarea
-              name='text'
-              value={getValue(props.selectedPost, 'body')}
-            />
+              value={props.textInputValue}
+              onChange={(e) => props.onChangedText(e.target.value)} />
+            {props.messageToUser !== null
+              &&
+            <div>{props.messageToUser}</div>}
           </form>
-          <button onClick={props.onCloseModal}>Close Modal</button>
+          <button
+            disabled={!props.isModifiedForm}
+            onClick={props.savePost}
+          >save</button>
+          <button onClick={props.onCloseModal}>close</button>
         </div>
       </Modal>
     </section>
   );
 }
-
-const getValue = (post, quality) => post !== null ? post[quality] : "";
-
