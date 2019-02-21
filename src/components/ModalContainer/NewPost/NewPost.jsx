@@ -1,5 +1,6 @@
 import React from 'react'
 import Modal from 'react-modal'
+import Question from '../Question/Question'
 
 Modal.setAppElement('#modal');
 
@@ -34,7 +35,12 @@ export default (props) => {
             disabled={!props.isModifiedForm}
             onClick={props.savePost}
           >save</button>
-          <button onClick={props.onCloseModal}>close</button>
+          <button
+            onClick={props.onCloseModal}>close</button>
+          {props.isModifiedForm &&
+            <Question
+              onCloseModal={props.onCloseModal}
+              isOpenModal={props.isModifiedForm}/>}
         </div>
       </Modal>
     </section>
