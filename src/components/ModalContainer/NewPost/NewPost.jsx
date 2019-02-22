@@ -5,7 +5,6 @@ import Question from '../Question/Question'
 Modal.setAppElement('#modal');
 
 export default (props) => {
-  console.log(props);
   return (
     <section>
       <Modal
@@ -37,10 +36,13 @@ export default (props) => {
           >save</button>
           <button
             onClick={props.onCloseModal}>close</button>
-          {props.isModifiedForm &&
+          {props.showQuestion &&
             <Question
               onCloseModal={props.onCloseModal}
-              isOpenModal={props.isModifiedForm}/>}
+              isOpenModal={props.isModifiedForm}
+              onShowQuestionForm={props.onShowQuestionForm}
+              onCloseQuestionForm={props.onCloseQuestionForm}
+              onSaveQuestionForm={props.onSaveQuestionForm}/>}
         </div>
       </Modal>
     </section>

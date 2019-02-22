@@ -45,9 +45,14 @@ class ModalContainer extends React.Component {
           textInputValue={this.props.textInputValue}
           messageToUser={this.props.messageToUser}
           isModifiedForm={this.props.isModifiedForm}
+          showQuestion={this.props.showQuestion}
           onChangedText={this.props.postActions.onChangedText}
           onChangedTitle={this.props.postActions.onChangedTitle}
-          savePost={this.props.postActions.savePost} />
+          savePost={this.props.postActions.savePost}
+          onShowQuestionForm={this.props.modalActions.onShowQuestionForm}
+          onCloseQuestionForm={this.props.modalActions.onCloseQuestionForm}
+          onSaveQuestionForm={this.props.modalActions.onSaveQuestionForm}
+          props={this.props}/>
         )
     } else if (this.props.loggedUser !== null
       && this.props.nameModal === 'Hi, ' + this.props.loggedUser.login) {

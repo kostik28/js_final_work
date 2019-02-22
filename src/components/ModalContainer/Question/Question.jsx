@@ -4,9 +4,10 @@ export default (props) => {
   return (
     <section>
         <div>
-          <h1>Title</h1>
-          <p>Some Contents</p>
-          <button onClick={props.onCloseModal}>Close Modal</button>
+          <p>Data changed! Save changes?</p>
+          <button onClick={props.onSaveQuestionForm}>yes</button>
+          <button onClick={props.onCloseQuestionForm}>no</button>
+          <button onClick={() => props.onShowQuestionForm(false)}>cancel</button>
         </div>
     </section>
   );

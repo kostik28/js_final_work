@@ -3,6 +3,7 @@ import * as types from '../constants/ModalConstants'
 const initialState = {
   nameModal: null,                        // имя модальной формы ('search', 'login', 'new post')
   isOpenedModal: false,                   // признак, что модальная форма открыта
+  showQuestion: false,
   pages: [
     {pageId: 0, name: 'login',  path: '',       modal: 'login'},
     {pageId: 1, name: 'users',  path: '/users', modal: ''},
@@ -31,6 +32,13 @@ const modal = (state = initialState, action) => {
         nameModal: null,
         loginInputValue: null,
         passwordInputValue: null
+      };
+
+    case types.SHOW_MODAL_QUESTION:
+      const { showQuestion } = action;
+      return {
+        ...state,
+        showQuestion
       };
 
     default:
