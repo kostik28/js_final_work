@@ -1,7 +1,7 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import {Route, Switch, Redirect} from 'react-router-dom';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import * as modalActions from '../../actions/ModalActions'
 import * as postActions from '../../actions/PostActions'
 import * as loginActions from '../../actions/LoginActions'
@@ -22,22 +22,31 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        {
-          this.props.isOpenedModal &&
-          <ModalContainer />
-        }
+
+        { this.props.isOpenedModal && <ModalContainer /> }
+
         <Header
           pages={this.props.pages}
           loggedUser={this.props.loggedUser}
-          onOpenModal={this.props.modalActions.onOpenModal}/>
+          onOpenModal={this.props.modalActions.onOpenModal} />
+
         <Switch>
           <Route
             exact
             path="/"
             render={() => <Redirect to='/posts' />}
           />
-          <Route exact path="/posts" component={Posts} />
-          <Route exact path="/users" component={Users} />
+
+          <Route
+            exact
+            path="/posts"
+            component={Posts} />
+
+          <Route
+            exact
+            path="/users"
+            component={Users} />
+
           <Route
             path="/posts/:id"
             exact
@@ -46,12 +55,14 @@ class App extends React.Component {
               const selectedPost = this.props.posts.find((post) => post.id === postId);
               const nextPost = this.props.posts.find((post) => post.id === postId + 1);
               const prevPost = this.props.posts.find((post) => post.id === postId - 1);
-              return <Post
-                      selectedPost={selectedPost}
-                      nextPost={nextPost}
-                      prevPost={prevPost} />
+              return (
+                <Post
+                  selectedPost={selectedPost}
+                  nextPost={nextPost}
+                  prevPost={prevPost} />)
             }}
           />
+
           <Route
             path="/users/:id"
             exact
@@ -60,17 +71,20 @@ class App extends React.Component {
               const selectedUser = this.props.users.find((user) => user.id === userId);
               const nextUser = this.props.users.find((user) => user.id === userId + 1);
               const prevUser = this.props.users.find((user) => user.id === userId - 1);
-              return <User
-                selectedUser={selectedUser}
-                nextUser={nextUser}
-                prevUser={prevUser}
-                loggedUser={this.props.loggedUser}
-                signOutUser={this.props.loginActions.signOutUser}/>
+              return (
+                <User
+                  selectedUser={selectedUser}
+                  nextUser={nextUser}
+                  prevUser={prevUser}
+                  loggedUser={this.props.loggedUser}
+                  signOutUser={this.props.loginActions.signOutUser} />)
             }}
           />
+
           <Route render={() => <h2> 404 Not Found</h2>} />
         </Switch>
-        <Footer />
+
+        <Footer/>
 
       </div>
     );

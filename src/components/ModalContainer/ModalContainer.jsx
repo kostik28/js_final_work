@@ -6,7 +6,6 @@ import * as loginActions from '../../actions/LoginActions'
 import * as postActions from '../../actions/PostActions'
 
 import Login from './Login/Login'
-import LoggedUser from './LoggedUser/LoggedUser'
 import NewPost from './NewPost/NewPost'
 import Search from './Search/Search'
 
@@ -25,41 +24,12 @@ class ModalContainer extends React.Component {
     } else if (this.props.nameModal === 'login') {
       return (
         <Login
-          isOpenedModal={this.props.isOpenedModal}
-          onCloseModal={this.props.modalActions.onCloseModal}
-          onChangedLogin={this.props.loginActions.onChangedLogin}
-          onChangedPassword={this.props.loginActions.onChangedPassword}
-          messageToUser={this.props.messageToUser}
-          onLogin={this.props.loginActions.onLogin}
-          loginInputValue={this.props.loginInputValue}
-          passwordInputValue={this.props.passwordInputValue}
-        />
-        )
+          props={this.props} />
+      )
     } else if (this.props.nameModal === 'new post' || this.props.nameModal === 'edit') {
       return (
         <NewPost
-          isOpenedModal={this.props.isOpenedModal}
-          onCloseModal={this.props.modalActions.onCloseModal}
-          loggedUser={this.props.loggedUser}
-          titleInputValue={this.props.titleInputValue}
-          textInputValue={this.props.textInputValue}
-          messageToUser={this.props.messageToUser}
-          isModifiedForm={this.props.isModifiedForm}
-          showQuestion={this.props.showQuestion}
-          onChangedText={this.props.postActions.onChangedText}
-          onChangedTitle={this.props.postActions.onChangedTitle}
-          savePost={this.props.postActions.savePost}
-          onShowQuestionForm={this.props.modalActions.onShowQuestionForm}
-          onCloseQuestionForm={this.props.modalActions.onCloseQuestionForm}
-          onSaveQuestionForm={this.props.modalActions.onSaveQuestionForm}
           props={this.props}/>
-        )
-    } else if (this.props.loggedUser !== null
-      && this.props.nameModal === 'Hi, ' + this.props.loggedUser.login) {
-      return (
-        <LoggedUser
-          isOpenedModal={this.props.isOpenedModal}
-          onCloseModal={this.props.modalActions.onCloseModal}/>
       )
     }
   }

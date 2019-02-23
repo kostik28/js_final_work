@@ -8,6 +8,7 @@ import {
   savePost
 } from '../actions/PostActions'
 
+// открытие модальной формы
 export const onOpenModal = (nameForm, post = null) => dispatch => {
   if (nameForm === 'new post' || nameForm === 'edit') {
     if (post !== null) {
@@ -22,6 +23,7 @@ export const onOpenModal = (nameForm, post = null) => dispatch => {
   dispatch({type: types.SHOW_MODAL_FORM, nameForm});
 };
 
+// закрытие модальной формы
 export const onCloseModal = () => (dispatch, setState) => {
   const state = setState();
 
@@ -39,6 +41,7 @@ export const onCloseModal = () => (dispatch, setState) => {
   }
 };
 
+// при сохранении поста из формы "Question"
 export const onSaveQuestionForm = () => (dispatch, setState) => {
   dispatch(onShowQuestionForm(false));
   dispatch(savePost());
@@ -49,10 +52,12 @@ export const onSaveQuestionForm = () => (dispatch, setState) => {
   }
 };
 
+// при закрытии поста из формы "Question"
 export const onCloseQuestionForm = () => dispatch => {
   dispatch(onShowQuestionForm(false));
   dispatch(setModifiedForm(false));
   dispatch(onCloseModal());
 };
 
-export const onShowQuestionForm = showQuestion => ({type: types.SHOW_MODAL_QUESTION, showQuestion});
+// при показе формы "Question"
+export const onShowQuestionForm = showQuestion => ({ type: types.SHOW_MODAL_QUESTION, showQuestion });

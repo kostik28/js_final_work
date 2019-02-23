@@ -1,26 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default class Header extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+export default (props) => {
 
-  completeMenu() {
+  function completeMenu() {
     return (
-      this.props.pages.map((obj, i) => {
+      props.pages.map((obj, i) => {
         if (obj.modal === '' && obj.name !== 'logo') {
-          return this.getLinkToLink(obj, i);
+          return getLinkToLink(obj, i);
         }else if(obj.name === 'logo'){
-          return this.getLinkTologo(obj, i);
+          return getLinkTologo(obj, i);
         }else if(obj.path === ''){
-          return this.getLinkToModal(obj, i);
+          return getLinkToModal(obj, i);
         }
       })
     )
   }
 
-  getLinkToLink(obj, i){
+  function getLinkToLink(obj, i) {
     return (
       <li key={i}>
         <Link to={obj.path}>{obj.name}</Link>
@@ -28,28 +25,37 @@ export default class Header extends React.Component {
     );
   }
 
-  getLinkTologo(obj, i){
+  function getLinkTologo(obj, i) {
     return(
       <li key={i}>
-        <Link to={obj.path}><img src='../../img/logo.png' alt='Логотип'/></Link>
+        <Link
+          to={obj.path}>
+          <img
+            src='../../img/logo.png'
+            alt='Логотип'/>
+        </Link>
       </li>
     );
   }
 
-  getLinkToModal(obj, i){
+  function getLinkToModal(obj, i){
     let linkName = obj.name;
 
-    const loggedUser = this.props.loggedUser;
+    const loggedUser = props.loggedUser;
     if(loggedUser !== null && obj.name === 'login') {
       linkName = 'Hi, ' + loggedUser.login
     }
 
     let blok;
     if (loggedUser !== null && linkName === 'Hi, ' + loggedUser.login) {
-      blok = <Link to={'/users/' + loggedUser.id}>{linkName}</Link>
+      blok = (
+        <Link
+          to={'/users/' + loggedUser.id}>
+          {linkName}
+        </Link>)
     } else {
       blok = (
-        <a onClick={(e) => {this.props.onOpenModal(e.target.innerHTML)}}>
+        <a onClick={(e) => {props.onOpenModal(e.target.innerHTML)}}>
           {linkName}
         </a>)
     }
@@ -61,13 +67,12 @@ export default class Header extends React.Component {
     );
   }
 
-  render() {
-    return (
-      <header>
-        <ul>
-          {this.completeMenu()}
-        </ul>
-      </header>
-    );
-  }
+  return (
+    <header>
+      <ul>
+        {completeMenu()}
+      </ul>
+    </header>
+  );
+
 }

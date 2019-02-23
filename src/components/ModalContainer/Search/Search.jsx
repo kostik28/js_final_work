@@ -18,5 +18,5 @@ export default (props) => {
         </div>
       </Modal>
     </section>
-  );
+  )
 }
