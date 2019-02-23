@@ -37,6 +37,13 @@ const login = (state = initialState, action) => {
         messageToUser
       };
 
+    case types.USER_SIGN_OUT:
+      const { loggedUser: logUser } = action;
+      return {
+        ...state,
+        loggedUser: logUser
+      };
+
     default:
       return state;
   }

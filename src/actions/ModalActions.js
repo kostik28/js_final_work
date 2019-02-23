@@ -24,12 +24,17 @@ export const onOpenModal = (nameForm, post = null) => dispatch => {
 
 export const onCloseModal = () => (dispatch, setState) => {
   const state = setState();
+
   if (state.post.isModifiedForm) {
     dispatch(onShowQuestionForm(true));
   } else {
     dispatch(onLoginUserMassage(null));
-    dispatch(onChangedTitle(''));
-    dispatch(onChangedText(''));
+
+    if (state.modal.nameForm === 'post' || state.modal.nameForm === 'new post') {
+      dispatch(onChangedTitle(''));
+      dispatch(onChangedText(''));
+    }
+
     dispatch({type: types.CLOSE_MODAL_FORM})
   }
 };

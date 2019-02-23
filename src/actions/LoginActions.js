@@ -20,6 +20,12 @@ export const onLogin = () => async (dispatch, getState) => {
   }
 };
 
+export const signOutUser = () => dispatch => {
+  dispatch({ type: types.USER_SIGN_OUT, loggedUser: null });
+  dispatch(onChangedLogin(''));
+  dispatch(onChangedPassword(''))
+};
+
 const checkCorrectPassword = (user, password) => dispatch => {
 
   if(user.password === password) {

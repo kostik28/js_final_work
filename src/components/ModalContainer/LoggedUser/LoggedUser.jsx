@@ -6,7 +6,6 @@ Modal.setAppElement('#modal');
 export default (props) => {
   return (
     <section>
-      <h1>React-Modal Examples</h1>
       <Modal
         isOpen={props.isOpenedModal}
         onClickAway={props.onCloseModal}

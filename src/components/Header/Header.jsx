@@ -37,17 +37,26 @@ export default class Header extends React.Component {
   }
 
   getLinkToModal(obj, i){
-
     let linkName = obj.name;
-    if(this.props.loggedUser !== null && obj.name === 'login') {
-      linkName = 'Hi, ' + this.props.loggedUser.login
+
+    const loggedUser = this.props.loggedUser;
+    if(loggedUser !== null && obj.name === 'login') {
+      linkName = 'Hi, ' + loggedUser.login
+    }
+
+    let blok;
+    if (loggedUser !== null && linkName === 'Hi, ' + loggedUser.login) {
+      blok = <Link to={'/users/' + loggedUser.id}>{linkName}</Link>
+    } else {
+      blok = (
+        <a onClick={(e) => {this.props.onOpenModal(e.target.innerHTML)}}>
+          {linkName}
+        </a>)
     }
 
     return(
       <li key={i}>
-        <a onClick={(e) => {this.props.onOpenModal(e.target.innerHTML)}}>
-          {linkName}
-        </a>
+        {blok}
       </li>
     );
   }

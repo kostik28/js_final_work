@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as modalActions from '../../actions/ModalActions'
 import * as postActions from '../../actions/PostActions'
+import * as loginActions from '../../actions/LoginActions'
 
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
@@ -59,7 +60,12 @@ class App extends React.Component {
               const selectedUser = this.props.users.find((user) => user.id === userId);
               const nextUser = this.props.users.find((user) => user.id === userId + 1);
               const prevUser = this.props.users.find((user) => user.id === userId - 1);
-              return <User selectedUser={selectedUser} nextUser={nextUser} prevUser={prevUser} />
+              return <User
+                selectedUser={selectedUser}
+                nextUser={nextUser}
+                prevUser={prevUser}
+                loggedUser={this.props.loggedUser}
+                signOutUser={this.props.loginActions.signOutUser}/>
             }}
           />
           <Route render={() => <h2> 404 Not Found</h2>} />
@@ -80,7 +86,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   modalActions: bindActionCreators(modalActions, dispatch),
-  postActions: bindActionCreators(postActions, dispatch)
+  postActions: bindActionCreators(postActions, dispatch),
+  loginActions: bindActionCreators(loginActions, dispatch)
 });
 
 const Wrapped = connect(mapStateToProps, mapDispatchToProps)(App);
