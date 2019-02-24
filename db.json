@@ -1232,7 +1232,7 @@
   "posts": [
     {
       "idUser": 10,
-      "id": 1,
+      "id": 12,
       "title": "power potion",
       "body": "Philips Power Potion by lead designer Holger Hoehn and Catherine Wong is a uniquely crafted capsule with an aluminum pattern ring and an integrated Apple Lightning connector. It holds enough juice to charge your Iphone once. Inspired by a bottle or air tank, this is a perfect gadget for the emergency dead-battery situations we all have.",
       "image": "http://defringe.com/backend/wp-content/uploads/2016/02/juice00.jpg",
@@ -1260,7 +1260,7 @@
     },
     {
       "idUser": 12,
-      "id": 2,
+      "id": 11,
       "title": "the garden chapel",
       "body": "Chinese studio AZL Architects designed Nanjing Wanjing Garden Chapel for a riverbank site in Wanjing Garden, a park in the city of Nanjing. A cross tops the 12-metre peak on the west facade, while a second low-level pitched roof nestled in the dip gives height to the church hall beneath. The building’s most noticeable feature is its profile – a variation on the typical butterfly roof, an inverted structure that rises at its edges rather that at its centre. A stunning design in terms of transparancy, light and lines.",
       "image": "http://defringe.com/backend/wp-content/uploads/2015/12/chapel00.jpg",
@@ -1282,7 +1282,7 @@
     },
     {
       "idUser": 10,
-      "id": 3,
+      "id": 10,
       "title": "astronaut suicides",
       "body": "After the space shuttle Atlantis completed its final expedition in 2011, the US shuttle program was terminated. Inspired by this event, American advertising and editorial photographer Neil Dacosta produced a photo series titled ‘Astronaut Suicides‘. The images, which were created in collaboration with art director Sara Phillips, reflect on the iconic profession of the astronaut and how the perception of the job has evolved in the past decade. In an interview about the project, Phillips said, 'The incongruity of the astronaut in these situations is, we hope, compelling and humorous, and we hope that we’re encouraging a younger audience to pay attention to what’s going on'.",
       "image": "http://defringe.com/backend/wp-content/uploads/2016/01/Astronaut00-1.jpg",
@@ -1317,7 +1317,7 @@
     },
     {
       "idUser": 22,
-      "id": 4,
+      "id": 9,
       "title": "the wire",
       "body": "Elliot Lim, a freelance creator from the US, is in love with the extremely popular show 'The Wire' on HBO. Elliot created a tribute, motion graphics, video clip, to showcase his version of the show opening.",
       "image": "http://defringe.com/backend/wp-content/uploads/2016/01/thewire.jpg",
@@ -1342,7 +1342,7 @@
     },
     {
       "idUser": 18,
-      "id": 5,
+      "id": 8,
       "title": "chai wan fire station",
       "body": "Wonderfully rectilinear work by Hong Kong photographer Chan Dick of a fire station that happens to be within viewing distance of his workspace. Looking down out of his window, the open yard next to the station transforms into serenely abstract, beautifully minimalist compositions.",
       "image": "http://defringe.com/backend/wp-content/uploads/2016/01/chai-wan-fire-station-00.jpg",
@@ -1369,7 +1369,7 @@
     },
     {
       "idUser": 24,
-      "id": 6,
+      "id": 7,
       "title": "dear brother",
       "body": "Two brothers traverse the fog-kissed, craggy terrain of Scotland’s Isle of Skye — their childhood home. Poetically, their experiences and depth of feeling for each other are being told. The notion of “freedom” and “being free” surfaces several times as they climb rocky hills and gaze over twisted landscapes as desolate and awe-inspiring as the mountains of the moon.",
       "image": "http://defringe.com/backend/wp-content/uploads/2015/12/dear-brother.jpg",
@@ -1383,11 +1383,8 @@
       "newPost": "false"
     },
     {
-      "user": {
-        "id": 2,
-        "login": "lazybird547"
-      },
-      "id": 7,
+      "idUser": 2,
+      "id": 6,
       "title": "balance",
       "body": "“Balance” is a family of wall mirrors by Spanish Kutarq Studio. It features a new fixture system that is set by the weight of the parts and gravity. The mirror surfaces are supported at various key points using colorful pegs which produce aesthetically pleasing, well-balanced settings around the living space. Each mirror kit includes four types of pegs and a reinforced rope. The family comes in three sizes that can be hung or suspended in endless ways.",
       "image": "http://defringe.com/backend/wp-content/uploads/2015/12/balance.jpg",
@@ -1415,7 +1412,7 @@
     },
     {
       "idUser": 8,
-      "id": 8,
+      "id": 5,
       "title": "back to nothing",
       "body": "“Back to Nothing” is a series of images from Alexis Vasilikos’ travels to India. There’s a sense of peace and tranquility in these photos that goes beyond minimalist photography. Vasilikos traveled to India for the first time in 2004 in search for a spiritual teacher, a Guru. He received great insights about the fundamental nature of reality and himself. The Athens-based photographer learned that liberation is possible and not just possible but also accessible to all because it’s not apart from what we are, it is at the core of our being.",
       "image": "http://defringe.com/backend/wp-content/uploads/2015/12/backtonothing.jpg",
@@ -1442,7 +1439,7 @@
     },
     {
       "idUser": 18,
-      "id": 9,
+      "id": 4,
       "title": "cityhub",
       "body": "There’s a new kind of traveller roaming the streets of Europe – carrying a smartphone and looking for the new underground cultural scene. These digital native tourists don’t want anything to do with the typical tourist. That’s why CityHub Amsterdam is focusing on these upcoming internet connected generations. The hotel offers 50 sleeping units (hubs), a ‘digital’ lobby and an app that familiarizes travellers with the city.",
       "image": "http://defringe.com/backend/wp-content/uploads/2015/12/cityhub.jpg",
@@ -1465,7 +1462,7 @@
     },
     {
       "idUser": 30,
-      "id": 10,
+      "id": 3,
       "title": "muller van severen",
       "body": "With a super consistent and recognizable style, Belgian label Muller van Severen has grown into an icon for furniture design. Their hybrid designs boast unexpected combinations. A playful combination of straight lines and curves adds joy to the otherwise serious world of furniture. Muller van Severen plays with the concepts of form and function. Which follows which?",
       "image": "http://defringe.com/backend/wp-content/uploads/2015/11/muller.jpg",
@@ -1493,7 +1490,7 @@
     },
     {
       "idUser": 12,
-      "id": 11,
+      "id": 2,
       "title": "h2ice",
       "body": "H2ICE is a collaborative fashion project by jewellery designer Minou Lejeune & fashion designer Dusty Thomas. Thomas’ label Bluedenîmes proved to be the perfect partner for Lejeune’s eccentric accessoires. Inspiration for H2ICE was found in the endlessly cold surroundings of Antartica. Thomas: “Antarctica is ruled by lots of ice cold winds, the collection H2ICE intends to be one of these icy winds.” The editorial was shot by fashion photographer Tyson Ernste.",
       "image": "http://defringe.com/backend/wp-content/uploads/2015/11/h2ice.jpg",
@@ -1516,7 +1513,7 @@
     },
     {
       "idUser": 1,
-      "id": 12,
+      "id": 1,
       "title": "around cos",
       "body": "Around COS is an intriguing fashion video project from artist duo Lernert & Sander. The Dutch guys are multi-talented artists, filmmakers and installation builders. Their concepts can be recognized by a humoristic or approach. For COS, they presented the AW 15/16 collection in a playful way without losing the clean attitude that defines the brand.",
       "image": "http://defringe.com/backend/wp-content/uploads/2015/11/h2ice.jpg",

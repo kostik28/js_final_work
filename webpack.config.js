@@ -5,6 +5,7 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 module.exports = {
   mode: 'development',
@@ -32,23 +33,12 @@ module.exports = {
           ]
         }
       },
-
       {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader'],
-        }),
-      },
-
-      {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader'],
-        }),
-      },
-
+        test: /\.(css|sass|scss)$/,
+        use: ExtractTextPlugin.extract(
+          { fallback: 'style-loader',
+            use: 'css-loader!sass-loader' })
+      }
     ]
   },
 
@@ -65,7 +55,8 @@ module.exports = {
     }),
     new CleanWebpackPlugin(['./dist']),
     new ExtractTextPlugin('styles.css'),
-    new CopyWebpackPlugin([{
+    new CopyWebpackPlugin([
+      {
       from: './src/fonts',
       to: './fonts'
       },

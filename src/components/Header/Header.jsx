@@ -20,17 +20,20 @@ export default (props) => {
   function getLinkToLink(obj, i) {
     return (
       <li key={i}>
-        <Link to={obj.path}>{obj.name}</Link>
+        <Link className='header-link' to={obj.path}>{obj.name}</Link>
       </li>
     );
   }
 
   function getLinkTologo(obj, i) {
+
     return(
       <li key={i}>
         <Link
-          to={obj.path}>
+          to={obj.path}
+          className='header-logo'>
           <img
+            className='header-img'
             src='../../img/logo.png'
             alt='Логотип'/>
         </Link>
@@ -50,12 +53,15 @@ export default (props) => {
     if (loggedUser !== null && linkName === 'Hi, ' + loggedUser.login) {
       blok = (
         <Link
-          to={'/users/' + loggedUser.id}>
+          to={'/users/' + loggedUser.id}
+          className='header-link'>
           {linkName}
         </Link>)
     } else {
       blok = (
-        <a onClick={(e) => {props.onOpenModal(e.target.innerHTML)}}>
+        <a
+          className='header-modal'
+          onClick={(e) => {props.onOpenModal(e.target.innerHTML)}}>
           {linkName}
         </a>)
     }
@@ -69,9 +75,11 @@ export default (props) => {
 
   return (
     <header>
-      <ul>
-        {completeMenu()}
-      </ul>
+      <nav className='header'>
+        <ul className='header-menu'>
+          {completeMenu()}
+        </ul>
+      </nav>
     </header>
   );
 

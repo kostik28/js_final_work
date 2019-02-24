@@ -80,8 +80,8 @@ export const setSelectedPost = selectedPost => ({ type: types.SET_SELECTED_POST,
 
 // сортировка массива постов
 const sortById = (obj_1, obj_2) => {
-  if (obj_1.id > obj_2.id) return 1;
-  if (obj_1.id < obj_2.id) return -1;
+  if (obj_1.id < obj_2.id) return 1;
+  if (obj_1.id > obj_2.id) return -1;
 };
 
 // создание нового поста
