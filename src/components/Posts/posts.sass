@@ -19,3 +19,49 @@
   &-article
     padding: 25px
     box-sizing: border-box
+
+.article
+  &-link
+    color: #1E1313
+    text-decoration: none
+    background: transparent
+    &:hover
+      color: #3D3E40
+      outline: 0
+
+  &-block
+    position: relative
+    width: 100%
+    overflow: hidden
+    background: #FFF
+    z-index: 1
+    cursor: zoom-in
+    border-radius: 4px
+
+  &-img
+    display: block
+    position: relative
+    width: 100%
+    height: auto
+    z-index: 1
+    transition: opacity 0.2s ease
+    opacity: 1
+    border: 0
+    &:hover
+      opacity: 0.5
+
+  &-title
+    margin: 1em 0 0.3em 0
+    padding: 0 25px
+    font-family: "CircularStd-Book", sans-serif
+    font-size: 1.46667em
+    font-weight: normal
+    text-transform: lowercase
+    box-sizing: border-box
+
+  &-text
+    color: #797C80
+    margin: 0
+    padding: 0 25px
+    box-sizing: border-box
+

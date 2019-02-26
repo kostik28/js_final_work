@@ -22,20 +22,31 @@ class Posts extends React.Component{
     return () => currentCount++
   };
 
+  getPostText(text) {
+    let sliced = text.slice(0, 245);
+    if (sliced.length < text.length) {
+      sliced += '...';
+    }
+    return sliced;
+  }
+
   displayCol(arr, rest, counter) {
     return arr.filter((item, i) => i % 3 === rest)
     .map(post => {
       return (
-        <div className='posts-blok' key={counter()}>
+        <div className='posts-block' key={counter()}>
           <article className='posts-article'>
-
+            <Link
+              className='article-link'
+              to={'/posts/' + post.id}>
+              <div className='article-block'>
+                <img className='article-img' src={post.image} alt='Картинка'/>
+              </div>
+              <h3 className='article-title'>{post.title}</h3>
+              <p className='article-text'>{this.getPostText(post.body)}</p>
+            </Link>
           </article>
-          <p>{post.id}, email: {post.title}</p>
-          <Link
-            to={'/posts/' + post.id}
-          >
-            перейти к посту
-          </Link>
+
         </div>
       )
     })
@@ -51,10 +62,9 @@ class Posts extends React.Component{
     return(
       <div className='posts'>
 
-        <h4>Список постов</h4>
-
         {this.props.loggedUser !== null &&
           <button
+            className='posts-btn__login btn'
             onClick={(e) => this.props.modalActions.onOpenModal(e.target.innerHTML)}>
             new post
           </button>
