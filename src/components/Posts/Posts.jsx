@@ -63,11 +63,14 @@ class Posts extends React.Component{
       <div className='posts'>
 
         {this.props.loggedUser !== null &&
-          <button
-            className='posts-btn__login btn'
-            onClick={(e) => this.props.modalActions.onOpenModal(e.target.innerHTML)}>
-            new post
-          </button>
+          <div
+            className='posts-btn__block'>
+            <button
+              className='posts-btn__login btn'
+              onClick={(e) => this.props.modalActions.onOpenModal(e.target.innerHTML)}>
+              new post
+            </button>
+          </div>
         }
 
         <div className='posts-inner'>

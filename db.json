@@ -391,7 +391,7 @@
         }
       },
       "email": "theodore.montgomery@example.com",
-      "login": "heavyostrich742",
+      "login": "heavy",
       "password": "1234",
       "dob": {
         "date": "1987-09-04T23:54:52Z",
@@ -1516,7 +1516,7 @@
       "id": 1,
       "title": "around cos",
       "body": "Around COS is an intriguing fashion video project from artist duo Lernert & Sander. The Dutch guys are multi-talented artists, filmmakers and installation builders. Their concepts can be recognized by a humoristic or approach. For COS, they presented the AW 15/16 collection in a playful way without losing the clean attitude that defines the brand.",
-      "image": "http://defringe.com/backend/wp-content/uploads/2015/11/h2ice.jpg",
+      "image": "http://defringe.com/backend/wp-content/uploads/2015/11/aroundcos.jpg",
       "images": [
         "http://defringe.com/backend/wp-content/uploads/2015/11/H2ICE01-855x1140.jpg",
         "http://defringe.com/backend/wp-content/uploads/2015/11/H2ICE02-855x1140.jpg",

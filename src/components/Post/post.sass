@@ -1,0 +1,66 @@
+.wrapper
+  position: relative
+  width: 100%
+  margin: 0 auto
+  padding: 0 25px
+  z-index: 2
+  opacity: 1
+  box-sizing: border-box
+
+.post
+  width: 100%
+  position: absolute
+  top: 0
+  left: 0
+
+  &-nav
+    position: absolute
+    top: -1.3em
+    z-index: 4
+    overflow: hidden
+    &:hover
+      transform: translate3d(5px, 0, 0)
+
+    &__left
+      left: 0
+
+    &__right
+      right: 0
+
+  &-link
+    color: #D4D5D9
+    transition: color 0.2s ease-out
+    &-hover
+      color: #BBBCBF
+
+  &-item
+    font-family: "CircularStd-Bold", sans-serif
+    font-weight: normal
+    font-size: 6em
+    text-rendering: optimizeLegibility
+    text-transform: lowercase
+    overflow: hidden
+    transition: transform 0.2s ease-out
+
+    &__left
+      padding: 0 5px 0 0
+
+    &__right
+      padding: 0 0 0 5px
+
+  &-subnav
+    display: block
+    font-family: "CircularStd-Medium", sans-serif
+    font-size: 0.875em
+    text-transform: lowercase
+    color: #808080
+    cursor: pointer
+    transition: transform 0.2s ease-out
+
+    &__left
+      text-align: left
+      margin: -2.5em 0 0 0.5em
+
+    &__right
+      text-align: right
+      margin: -2.5em 0.5em 0 0

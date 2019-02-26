@@ -42,40 +42,91 @@ class Post extends React.Component {
     const counter = this.makeCounter();
     const postAuthor = this.props.users.find(user => user.id === selectedPost.idUser);
     return (
-      <div>
-        <p>title: {selectedPost.title}</p>
-        <p>text: {selectedPost.body}</p>
-        <Link
-          to={'/users/' + postAuthor.id}
-        >
-          <button>
-            {postAuthor.login}
-          </button>
-        </Link>
+      <section className='wrapper'>
+        <div className='post'>
 
-        <button
-          disabled={this.props.loggedUser === null || this.props.loggedUser.id === postAuthor.id}
-          onClick={(e) => this.putLike(e.target)}
-        >
-          {selectedPost.likes.length + ' likes'}
-        </button>
+          {this.props.prevPost !== undefined &&
+            <div className='post-nav__left post-nav'>
 
-        {this.props.loggedUser !== null && this.props.loggedUser.id === postAuthor.id &&
-          <button
-            onClick={(e) => this.props.modalActions.onOpenModal(e.target.innerHTML, selectedPost)}
-          >edit</button>
-        }
+              <Link
+                className='post-link'
+                to={'/posts/' + this.props.prevPost.id}>
 
-        <div>
-          <div>{this.displayImages(selectedPost.images, 0, counter)}</div>
-          <div>{this.displayImages(selectedPost.images, 1, counter)}</div>
+                <div className='post-item post-item__left'>
+                  {this.props.prevPost.title.slice(
+                    this.props.prevPost.title.length - 4,
+                    this.props.prevPost.title.length)}
+                </div>
+
+                <span className='post-subnav post-subnav__left'>
+                  Prev
+                </span>
+
+              </Link>
+
+            </div>}
+
+          <div className='post-content'>
+            <article>
+              <div className='post-content__info'>
+                <h1 className='post-content__title'>{selectedPost.title}</h1>
+                <div className='post-content__buttons'>
+
+                  <Link
+                    to={'/users/' + postAuthor.id}>
+                    <button>
+                      {postAuthor.login}
+                    </button>
+                  </Link>
+
+                  <button
+                    disabled={this.props.loggedUser === null || this.props.loggedUser.id === postAuthor.id}
+                    onClick={(e) => this.putLike(e.target)}>
+                    {selectedPost.likes.length + ' likes'}
+                  </button>
+
+                  {this.props.loggedUser !== null && this.props.loggedUser.id === postAuthor.id &&
+                    <button
+                      onClick={(e) => this.props.modalActions.onOpenModal(e.target.innerHTML, selectedPost)}>
+                      edit
+                    </button>}
+
+                </div>
+                <div className='post-content__text'>{selectedPost.body}</div>
+              </div>
+
+              <div className='post-content__images'>
+                  <div>{this.displayImages(selectedPost.images, 0, counter)}</div>
+                  <div>{this.displayImages(selectedPost.images, 1, counter)}</div>
+              </div>
+
+            </article>
+          </div>
+
+          {this.props.nextPost !== undefined &&
+          <div className='post-nav__right post-nav'>
+
+            <Link
+              className='post-link'
+              to={'/posts/' + this.props.nextPost.id}>
+
+              <div className='post-item post-item__right'>
+                {this.props.nextPost.title.slice(
+                  this.props.nextPost.title.length - 4,
+                  this.props.nextPost.title.length)}
+              </div>
+
+              <span className='post-subnav post-subnav__right'>
+                Next
+              </span>
+
+            </Link>
+
+          </div>}
+
         </div>
+      </section>
 
-        <Link to='/posts'>перейти назад</Link>
-        <div>{this.props.nextPost !== undefined && <Link to={'/posts/' + this.props.nextPost.id}>Вперед</Link>}</div>
-        <div>{this.props.prevPost !== undefined && <Link to={'/posts/' + this.props.prevPost.id}>Назад</Link>}</div>
-
-      </div>
     );
   }
 }
