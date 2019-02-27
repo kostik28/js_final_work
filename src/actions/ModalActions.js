@@ -32,7 +32,7 @@ export const onCloseModal = () => (dispatch, setState) => {
   } else {
     dispatch(onLoginUserMassage(null));
 
-    if (state.modal.nameForm === 'post' || state.modal.nameForm === 'new post') {
+    if (state.modal.nameModal === 'post' || state.modal.nameModal === 'new post') {
       dispatch(onChangedTitle(''));
       dispatch(onChangedText(''));
     }

@@ -6,6 +6,12 @@
   z-index: 2
   opacity: 1
   box-sizing: border-box
+  &::after
+    content: "."
+    visibility: hidden
+    display: block
+    height: 0
+    clear: both
 
 .post
   width: 100%
@@ -18,20 +24,25 @@
     top: -1.3em
     z-index: 4
     overflow: hidden
-    &:hover
-      transform: translate3d(5px, 0, 0)
 
     &__left
       left: 0
+      &:hover
+        transform: translate3d(5px, 0, 0)
+        transition: .4s
 
     &__right
       right: 0
+      &:hover
+        transform: translate3d(-5px, 0, 0)
+        transition: .4s
 
   &-link
     color: #D4D5D9
     transition: color 0.2s ease-out
-    &-hover
+    &:hover
       color: #BBBCBF
+      outline: 0
 
   &-item
     font-family: "CircularStd-Bold", sans-serif

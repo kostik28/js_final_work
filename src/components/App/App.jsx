@@ -53,8 +53,8 @@ class App extends React.Component {
             render={(props) => {
               const postId = +props.match.params.id;
               const selectedPost = this.props.posts.find((post) => post.id === postId);
-              const nextPost = this.props.posts.find((post) => post.id === postId + 1);
-              const prevPost = this.props.posts.find((post) => post.id === postId - 1);
+              const nextPost = this.props.posts.find((post) => post.id === postId - 1);
+              const prevPost = this.props.posts.find((post) => post.id === postId + 1);
               return (
                 <Post
                   selectedPost={selectedPost}

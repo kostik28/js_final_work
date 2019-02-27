@@ -1,7 +1,7 @@
 import React from 'react'
 import Question from "../NewPost/NewPost";
 
-export default (data) => {
+export default (props) => {
   return (
     <section>
         <div>
