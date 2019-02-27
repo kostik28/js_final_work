@@ -3,9 +3,9 @@ import React from 'react'
 export default (props) => {
 
   return (
-    <div>
+    <footer>
       123
-    </div>
+    </footer>
   );
 
 }

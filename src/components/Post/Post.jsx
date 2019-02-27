@@ -14,7 +14,11 @@ class Post extends React.Component {
     return arr.filter((item, i) => i % 2 === rest)
     .map(obj => {
       return (
-        <img key={counter()} src={obj} alt='Картинка'/>
+          <img
+            className='images-img'
+            key={counter()}
+            src={obj}
+            alt='Картинка'/>
       )
     })
   };
@@ -38,6 +42,7 @@ class Post extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     const selectedPost = this.props.selectedPost;
     const counter = this.makeCounter();
     const postAuthor = this.props.users.find(user => user.id === selectedPost.idUser);
@@ -69,35 +74,40 @@ class Post extends React.Component {
           <div className='post-content'>
             <article>
               <div className='post-content__info'>
-                <h1 className='post-content__title'>{selectedPost.title}</h1>
-                <div className='post-content__buttons'>
 
+                <h1 className='post-content__title'>{selectedPost.title}</h1>
+
+                <div className='post-content__buttons'>
                   <Link
                     to={'/users/' + postAuthor.id}>
-                    <button>
+                    <button className='btn'>
                       {postAuthor.login}
                     </button>
                   </Link>
 
                   <button
+                    className='btn'
                     disabled={this.props.loggedUser === null || this.props.loggedUser.id === postAuthor.id}
                     onClick={(e) => this.putLike(e.target)}>
-                    {selectedPost.likes.length + ' likes'}
+                      {selectedPost.likes.length + ' likes'}
                   </button>
 
                   {this.props.loggedUser !== null && this.props.loggedUser.id === postAuthor.id &&
                     <button
+                      className='btn'
                       onClick={(e) => this.props.modalActions.onOpenModal(e.target.innerHTML, selectedPost)}>
                       edit
                     </button>}
-
                 </div>
+
                 <div className='post-content__text'>{selectedPost.body}</div>
               </div>
 
               <div className='post-content__images'>
-                  <div>{this.displayImages(selectedPost.images, 0, counter)}</div>
-                  <div>{this.displayImages(selectedPost.images, 1, counter)}</div>
+                <div className='images-block'>
+                  <div className='images-column'>{this.displayImages(selectedPost.images, 0, counter)}</div>
+                  <div className='images-column'>{this.displayImages(selectedPost.images, 1, counter)}</div>
+                </div>
               </div>
 
             </article>
