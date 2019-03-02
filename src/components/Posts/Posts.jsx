@@ -62,6 +62,8 @@ class Posts extends React.Component{
     return(
       <div className='posts'>
 
+        <h1 className='posts-title'>posts</h1>
+
         {this.props.loggedUser !== null &&
           <div
             className='posts-btn__block'>

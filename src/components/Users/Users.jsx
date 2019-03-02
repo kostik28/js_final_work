@@ -17,6 +17,11 @@ class Users extends React.Component{
   render() {
     return(
       <div className='users'>
+
+        <h1 className='users-title'>
+          users
+        </h1>
+
         <div className='users-block'>
         {
           this.props.users.map((user, i) => {
