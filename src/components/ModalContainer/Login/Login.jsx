@@ -12,6 +12,8 @@ export default (data) => {
     <section>
       <Modal
         isOpen={props.isOpenedModal}
+        contentLabel="onRequestClose Example"
+        onRequestClose={props.modalActions.onCloseModal}
         onClickAway={props.modalActions.onCloseModal}>
         <div>
 

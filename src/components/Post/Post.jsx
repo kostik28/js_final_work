@@ -4,10 +4,23 @@ import {bindActionCreators} from "redux";
 import * as postActions from "../../actions/PostActions";
 import * as modalActions from "../../actions/ModalActions";
 import {connect} from "react-redux";
+import $ from 'jquery'
 
 class Post extends React.Component {
   constructor(props) {
     super(props)
+  }
+
+  componentDidUpdate() {
+    const column_1 = $("div.images-column_1").height();
+    const column_2 = $("div.images-column_2").height();
+    const info = $("div.post-content__info").height();
+    // $("#id-wrapper").height(Math.max(column_1 + info, column_2 + info));
+    console.log(column_1);
+    console.log(column_2);
+    console.log(info);
+    console.log(Math.max(column_1, column_2, info));
+
   }
 
   displayImages(arr, rest, counter) {
@@ -42,12 +55,11 @@ class Post extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     const selectedPost = this.props.selectedPost;
     const counter = this.makeCounter();
     const postAuthor = this.props.users.find(user => user.id === selectedPost.idUser);
     return (
-      <section className='wrapper'>
+      <section id='id-wrapper' className='wrapper'>
         <div className='post'>
 
           {this.props.prevPost !== undefined &&
@@ -105,8 +117,8 @@ class Post extends React.Component {
 
               <div className='post-content__images'>
                 <div className='images-block'>
-                  <div className='images-column'>{this.displayImages(selectedPost.images, 0, counter)}</div>
-                  <div className='images-column'>{this.displayImages(selectedPost.images, 1, counter)}</div>
+                  <div className='images-column images-column_1'>{this.displayImages(selectedPost.images, 0, counter)}</div>
+                  <div className='images-column images-column_2'>{this.displayImages(selectedPost.images, 1, counter)}</div>
                 </div>
               </div>
 
