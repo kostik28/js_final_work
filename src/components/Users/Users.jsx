@@ -16,20 +16,29 @@ class Users extends React.Component{
 
   render() {
     return(
-      <div>
-        <h4>Список пользователей</h4>
+      <div className='users'>
+        <div className='users-block'>
         {
           this.props.users.map((user, i) => {
             return (
-              <div key={i}>
-                <p>{user.login}, email: {user.email}</p>
-                <Link to={'/users/' + user.id}>
-                  перейти к пользователю
-                </Link>
+                <div className='users-user' key={i}>
+                  <Link to={'/users/' + user.id}>
+                    <div className='users-inner'>
+                      <div className="users-img">
+                        <img src={user.picture.medium}/>
+                      </div>
+                      <div className='users-info'>
+                        <span> <b>login:</b> {user.login}</span>
+                        <span> <b>email:</b> {user.email}</span>
+                        <span> <b>phone:</b> {user.phone}</span>
+                      </div>
+                    </div>
+                  </Link>
               </div>
             );
           })
         }
+        </div>
       </div>
     )
   }
