@@ -18,6 +18,12 @@ export default (props) => {
 
           <span className='user-fio'>{props.selectedUser.name.first} {props.selectedUser.name.last}</span>
 
+          <span className='user-age'>{props.selectedUser.dob.age} years</span>
+
+          <span className='user-phone'>phone: {props.selectedUser.phone}</span>
+
+          <span className='user-email'>email: {props.selectedUser.email}</span>
+
           {props.loggedUser !== null && props.selectedUser.id === props.loggedUser.id &&
             <button
               className='btn user-btn'
