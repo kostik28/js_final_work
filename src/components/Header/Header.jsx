@@ -57,16 +57,16 @@ export default (props) => {
       linkName = 'Hi, ' + getLogin(loggedUser.login)
     }
 
-    let blok;
+    let block;
     if (loggedUser !== null && linkName === 'Hi, ' + loggedUser.login) {
-      blok = (
+      block = (
         <Link
           to={'/users/' + loggedUser.id}
           className='header-link'>
           {linkName}
         </Link>)
     } else {
-      blok = (
+      block = (
         <a
           className='header-modal'
           onClick={(e) => {props.onOpenModal(e.target.innerHTML)}}>
@@ -76,7 +76,7 @@ export default (props) => {
 
     return(
       <li key={i}>
-        {blok}
+        {block}
       </li>
     );
   }
