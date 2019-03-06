@@ -21,72 +21,81 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='main'>
 
         { this.props.isOpenedModal && <ModalContainer /> }
 
-        <Header
-          pages={this.props.pages}
-          loggedUser={this.props.loggedUser}
-          onOpenModal={this.props.modalActions.onOpenModal} />
+        <header>
+          <Header
+            pages={this.props.pages}
+            loggedUser={this.props.loggedUser}
+            onOpenModal={this.props.modalActions.onOpenModal} />
+        </header>
 
-        <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => <Redirect to='/posts' />}
-          />
+        <section className='main-content'>
 
-          <Route
-            exact
-            path="/posts"
-            component={Posts} />
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={() => <Redirect to='/posts'/>}
+            />
 
-          <Route
-            exact
-            path="/users"
-            component={Users} />
+            <Route
+              exact
+              path="/posts"
+              component={Posts}/>
 
-          <Route
-            path="/posts/:id"
-            exact
-            render={(props) => {
-              const postId = +props.match.params.id;
-              const selectedPost = this.props.posts.find((post) => post.id === postId);
-              const nextPost = this.props.posts.find((post) => post.id === postId - 1);
-              const prevPost = this.props.posts.find((post) => post.id === postId + 1);
-              return (
-                <Post
-                  selectedPost={selectedPost}
-                  nextPost={nextPost}
-                  prevPost={prevPost} />)
-            }}
-          />
+            <Route
+              exact
+              path="/users"
+              component={Users}/>
 
-          <Route
-            path="/users/:id"
-            exact
-            render={(props) => {
-              const userId = +props.match.params.id;
-              const selectedUser = this.props.users.find((user) => user.id === userId);
-              const nextUser = this.props.users.find((user) => user.id === userId + 1);
-              const prevUser = this.props.users.find((user) => user.id === userId - 1);
-              return (
-                <User
-                  selectedUser={selectedUser}
-                  nextUser={nextUser}
-                  prevUser={prevUser}
-                  loggedUser={this.props.loggedUser}
-                  signOutUser={this.props.loginActions.signOutUser} />)
-            }}
-          />
+            <Route
+              path="/posts/:id"
+              exact
+              render={(props) => {
+                const postId = +props.match.params.id;
+                const selectedPost = this.props.posts.find((post) => post.id === postId);
+                const nextPost = this.props.posts.find((post) => post.id === postId - 1);
+                const prevPost = this.props.posts.find((post) => post.id === postId + 1);
+                return (
+                  <Post
+                    selectedPost={selectedPost}
+                    nextPost={nextPost}
+                    prevPost={prevPost}/>)
+              }}
+            />
 
-          <Route render={() => <h2> 404 Not Found</h2>} />
-        </Switch>
+            <Route
+              path="/users/:id"
+              exact
+              render={(props) => {
+                const userId = +props.match.params.id;
+                const selectedUser = this.props.users.find((user) => user.id === userId);
+                const nextUser = this.props.users.find((user) => user.id === userId + 1);
+                const prevUser = this.props.users.find((user) => user.id === userId - 1);
+                return (
+                  <User
+                    selectedUser={selectedUser}
+                    nextUser={nextUser}
+                    prevUser={prevUser}
+                    loggedUser={this.props.loggedUser}
+                    signOutUser={this.props.loginActions.signOutUser}/>)
+              }}
+            />
 
-        <Footer/>
+            <Route render={() => <h2> 404 Not Found</h2>}/>
+          </Switch>
+
+        </section>
+
+        <footer>
+          <Footer/>
+        </footer>
 
       </div>
+
     );
   }
 }

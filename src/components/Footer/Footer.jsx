@@ -3,7 +3,7 @@ import React from 'react'
 export default (props) => {
 
   return (
-    <footer className='footer'>
+    <div className='footer'>
       <ul className='social'>
         <a href='https://vk.com/kostik2811'><li>vk</li></a>
         <a href='https://vk.com/kostik2811'><li>facebook</li></a>
@@ -11,7 +11,7 @@ export default (props) => {
         <a href='https://vk.com/kostik2811'><li>instagremm</li></a>
         <a href='https://vk.com/kostik2811'><li>ello</li></a>
       </ul>
-    </footer>
+    </div>
   );
 
 }

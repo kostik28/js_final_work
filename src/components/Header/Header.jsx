@@ -82,13 +82,11 @@ export default (props) => {
   }
 
   return (
-    <header>
-      <nav className='header'>
-        <ul className='header-menu'>
-          {completeMenu()}
-        </ul>
-      </nav>
-    </header>
+    <nav className='header'>
+      <ul className='header-menu'>
+        {completeMenu()}
+      </ul>
+    </nav>
   );
 
 }

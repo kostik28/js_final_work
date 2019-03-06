@@ -90,8 +90,12 @@ const createNewPost = (state) => {
     id: state.post.posts.length + 1,
     title: state.post.titleInputValue,
     body: state.post.textInputValue,
-    image: 'https://i.ytimg.com/vi/HYb5TDsAoGw/maxresdefault.jpg',
-    images: [],
+    image: 'https://im0-tub-ru.yandex.net/i?id=28c177f2283f71cf01e99f37da2a1fa9-l&n=13',
+    images: [
+      'https://im0-tub-ru.yandex.net/i?id=ddbd361f38d87efa80b35b7efb62a5ba-l&n=13',
+      'https://im0-tub-ru.yandex.net/i?id=cc896cefd58e40eb8d5a88332257f504-l&n=13',
+      'https://im0-tub-ru.yandex.net/i?id=ea2605d38bf68b5ea5ca7aa58a9c44d6-l&n=13',
+      'https://im0-tub-ru.yandex.net/i?id=4caeeb4a2060f272a145ce822357123f-l&n=13'],
     likes: [],
     newPost: true
   }
