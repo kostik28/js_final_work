@@ -11,31 +11,23 @@
   text-transform: lowercase
   transition: opacity 0.2s ease-out
 
-.login
+.newpost
+  &-user
+    font-family: "CircularStd-Medium", sans-serif
+    font-size: 2em
+
+
   &-form
-    overflow: auto
+    min-width: 600px
     max-width: 600px
-    height: 200px
-
-  &-inner
-    display: flex
-    flex-direction: column
-    align-items: center
-    justify-content: center
-
-  &-block
-    display: flex
-    flex-direction: row
-    align-items: center
-    justify-content: space-around
-    width: 100%
-    margin-bottom: 15px
+    height: 100%
+    text-align: center
 
   &-field
     display: flex
     flex-direction: column
-    flex-basis: 45%
 
+  &-block
     label
       color: #000
       font-family: "CircularStd-Medium", sans-serif
@@ -44,6 +36,7 @@
       text-transform: lowercase
       margin: 0
       padding: 0
+      text-align: left
 
   &-input
     padding: 10px 15px
@@ -55,20 +48,7 @@
     box-sizing: border-box
     line-height: normal
     font-size: 16px
-
-  &-error
-    border: 1px solid red
+    margin-bottom: 15px
 
   &-btn
-    padding: 0.3em 2em
     margin-top: 15px
-
-  &-message
-    color: red
-    font-family: "CircularStd-Medium", sans-serif
-    font-size: 1.1em
-
-.btn-block
-  display: flex
-  justify-content: center
-

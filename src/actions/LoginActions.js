@@ -3,10 +3,16 @@ import { onCloseModal } from '../actions/ModalActions'
 import { searchUserByLogin } from '../actions/UserActions'
 
 // при вводе логина
-export const onChangedLogin = login => ({ type: types.USER_INPUT_LOGIN_CHANGED, login });
+export const onChangedLogin = login => dispatch => {
+  dispatch(onLoginUserMassage(null));
+  dispatch({ type: types.USER_INPUT_LOGIN_CHANGED, login });
+};
 
 // при вводе пароля
-export const onChangedPassword = password => ({ type: types.USER_INPUT_PASSWORD_CHANGED, password });
+export const onChangedPassword = password => dispatch => {
+  dispatch(onLoginUserMassage(null));
+  dispatch({ type: types.USER_INPUT_PASSWORD_CHANGED, password });
+};
 
 // авторизация пользователя на сайте
 // 1. Ищем пользователя по логину
@@ -41,7 +47,6 @@ const checkCorrectPassword = (user, password) => dispatch => {
     dispatch(onLoginUserMassage(null));
     dispatch(onCloseModal());
   }else {
-    console.log('searchUser');
     dispatch({ type: types.USER_LOGIN, loggedUser:null });
     dispatch(onLoginUserMassage('The password is incorrect'));
   }

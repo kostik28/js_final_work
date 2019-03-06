@@ -70,7 +70,7 @@ class Posts extends React.Component{
             <button
               className='posts-btn__login btn'
               onClick={(e) => this.props.modalActions.onOpenModal(e.target.innerHTML)}>
-              new post
+                new post
             </button>
           </div>
         }

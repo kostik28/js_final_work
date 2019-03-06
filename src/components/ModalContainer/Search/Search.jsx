@@ -12,8 +12,7 @@ export default (props) => {
         onClickAway={props.onCloseModal}
       >
         <div>
-          <h1>Title</h1>
-          <p>Some Contents</p>
+          <h1>Page not done</h1>
           <button onClick={props.onCloseModal}>Close Modal</button>
         </div>
       </Modal>

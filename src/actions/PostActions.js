@@ -60,7 +60,6 @@ export const savePost = () => (dispatch, getState) => {
     let selectedPost = {};
     if (state.modal.nameModal === 'new post') {
       selectedPost = createNewPost({...state});
-      console.log(selectedPost);
     } else {
       selectedPost = {
         ...state.post.selectedPost,
@@ -86,7 +85,6 @@ const sortById = (obj_1, obj_2) => {
 
 // создание нового поста
 const createNewPost = (state) => {
-  console.log(state);
   return {
     idUser: state.login.loggedUser.id,
     id: state.post.posts.length + 1,

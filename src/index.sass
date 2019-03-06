@@ -43,14 +43,18 @@ button[disabled]:hover
   background: #FFF
   border: 2px solid #797C80
 
+button::-moz-focus-inner,
+input::-moz-focus-inner
+  border: 0
+  padding: 0
+
 .btn
   color: #000
   background: #FFF
   font-family: "CircularStd-Bold", sans-serif
   font-size: 0.9em
-  text-transform: uppercase
   display: inline-block
-  padding: 0.3em 1em
+  padding: 0.3em 2em
   margin: 0 0.6em
   border: 2px solid #000
   border-radius: 100px
@@ -67,3 +71,5 @@ button[disabled]:hover
 @import "components/Users/users"
 @import "components/User/user"
 @import "components/ModalContainer/Login/login"
+@import "components/ModalContainer/NewPost/newpost"
+@import "components/Footer/footer"

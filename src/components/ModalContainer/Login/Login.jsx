@@ -22,7 +22,11 @@ const defaultStyles = {
     boxSizing: 'border-box',
     transition: 'opacity 0.2s ease-out',
     textTransform: 'lowercase',
-    height: '100%'
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 };
 
@@ -48,7 +52,7 @@ export default (data) => {
                 </label>
                 <input
                   id='login'
-                  className='field-login'
+                  className={props.messageToUser !== null ? 'login-input login-error' : 'login-input'}
                   name='login'
                   autoComplete='off'
                   placeholder='heavy'
@@ -62,7 +66,7 @@ export default (data) => {
                 </label>
                 <input
                   id='password'
-                  className='field-password'
+                  className={props.messageToUser !== null ? 'login-input login-error' : 'login-input'}
                   name='password'
                   autoComplete='off'
                   placeholder='1234'
@@ -72,29 +76,32 @@ export default (data) => {
 
             </div>
 
-            {props.messageToUser !== null && <div>{props.messageToUser}</div>}
+            {props.messageToUser !== null && <div className='login-message'>{props.messageToUser}</div>}
 
-            <button
-              className='btn'
-              disabled={
-                props.passwordInputValue === null
-                || props.loginInputValue === null
-                || props.passwordInputValue.length <= 0
-                || props.loginInputValue.length <= 0}
-              onClick={(e) => {
-                props.loginActions.onLogin(props.loginInputValue)
-              }}>
-              log in
-            </button>
+            <div className='btn-block'>
+              <button
+                className='btn login-btn'
+                disabled={
+                  props.passwordInputValue === null
+                  || props.loginInputValue === null
+                  || props.passwordInputValue.length <= 0
+                  || props.loginInputValue.length <= 0}
+                onClick={(e) => {
+                  props.loginActions.onLogin(props.loginInputValue)
+                }}>
+                log in
+              </button>
+
+              <button
+                className='btn login-btn'
+                onClick={props.modalActions.onCloseModal}>
+                close
+              </button>
+            </div>
 
           </div>
 
-      </div>
-
-          <button
-            onClick={props.modalActions.onCloseModal}>
-            close
-          </button>
+        </div>
 
       </Modal>
     </section>

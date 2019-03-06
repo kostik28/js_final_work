@@ -11,18 +11,6 @@ class Post extends React.Component {
     super(props)
   }
 
-  componentDidUpdate() {
-    const column_1 = $("div.images-column_1").height();
-    const column_2 = $("div.images-column_2").height();
-    const info = $("div.post-content__info").height();
-    // $("#id-wrapper").height(Math.max(column_1 + info, column_2 + info));
-    console.log(column_1);
-    console.log(column_2);
-    console.log(info);
-    console.log(Math.max(column_1, column_2, info));
-
-  }
-
   displayImages(arr, rest, counter) {
     return arr.filter((item, i) => i % 2 === rest)
     .map(obj => {
