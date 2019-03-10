@@ -3,14 +3,6 @@ import { Link } from 'react-router-dom';
 
 export default (props) => {
 
-  function getLogin(text) {
-    let sliced = text.slice(0, 9);
-    if (sliced.length < text.length) {
-      sliced += '...';
-    }
-    return sliced;
-    }
-
   function completeMenu() {
     return (
       props.pages.map((obj, i) => {
@@ -54,7 +46,7 @@ export default (props) => {
 
     const loggedUser = props.loggedUser;
     if(loggedUser !== null && obj.name === 'login') {
-      linkName = 'Hi, ' + getLogin(loggedUser.login)
+      linkName = 'Hi, ' + loggedUser.login
     }
 
     let block;
