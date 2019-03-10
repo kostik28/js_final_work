@@ -3,7 +3,7 @@ import * as types from '../constants/ModalConstants'
 const initialState = {
   nameModal: null,                        // имя модальной формы ('search', 'login', 'new post')
   isOpenedModal: false,                   // признак, что модальная форма открыта
-  showQuestion: false,
+  showQuestion: false,                    // показывать модальную форму вопроса
   pages: [
     {pageId: 0, name: 'login',  path: '',       modal: 'login'},
     {pageId: 1, name: 'users',  path: '/users', modal: ''},

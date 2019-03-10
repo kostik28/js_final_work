@@ -46,6 +46,13 @@ class Post extends React.Component {
     const selectedPost = this.props.selectedPost;
     const counter = this.makeCounter();
     const postAuthor = this.props.users.find(user => user.id === selectedPost.idUser);
+    const disabledButtonLike = this.props.loggedUser === null || this.props.loggedUser.id === postAuthor.id;
+    let classBtnLike = 'btn';
+    if (this.props.loggedUser !== null) {
+      if (selectedPost.likes.find(elem => elem === this.props.loggedUser.id) !== undefined) {
+        classBtnLike = 'btn btn-like';
+      }
+    }
     return (
       <section id='id-wrapper' className='wrapper'>
         <div className='post'>
@@ -86,8 +93,8 @@ class Post extends React.Component {
                   </Link>
 
                   <button
-                    className='btn'
-                    disabled={this.props.loggedUser === null || this.props.loggedUser.id === postAuthor.id}
+                    className={classBtnLike}
+                    disabled={disabledButtonLike}
                     onClick={(e) => this.putLike(e.target)}>
                       {selectedPost.likes.length + ' likes'}
                   </button>

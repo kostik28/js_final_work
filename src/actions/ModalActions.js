@@ -5,7 +5,7 @@ import {
   onChangedText,
   onChangedTitle,
   setModifiedForm,
-  savePost
+  savePost,
 } from '../actions/PostActions'
 
 // открытие модальной формы

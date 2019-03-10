@@ -2,12 +2,11 @@ import * as types from "../constants/PostConstants";
 
 const initialState = {
   posts: [],                              // список постов
-  userPost: null,
-  errorPostFetch: null,
-  selectedPost: null,
-  titleInputValue: '',
-  textInputValue: '',
-  isModifiedForm: false
+  errorPostFetch: null,                   // ошибка загрузка постов
+  selectedPost: null,                     // текущий пост
+  titleInputValue: '',                    // заголовок поста
+  textInputValue: '',                     // текст поста
+  isModifiedForm: false                   // форма модифицированна (изменен заголовок или текст)
 };
 
 const post = (state = initialState, action) => {

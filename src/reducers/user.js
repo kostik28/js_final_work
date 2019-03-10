@@ -3,7 +3,7 @@ import { CLICK_POST } from '../constants/PostConstants'
 
 const initialState = {
   users: [],                              // список пользователей
-  errorUserFetch: null,
+  errorUserFetch: null,                   // ошибка загрузки пользователей
 };
 
 const user = (state = initialState, action) => {

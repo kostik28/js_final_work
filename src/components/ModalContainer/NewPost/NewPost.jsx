@@ -34,7 +34,7 @@ const defaultStyles = {
 
 export default (data) => {
   const props = data.props;
-
+  console.log(props);
   return (
     <section>
       <Modal
@@ -58,7 +58,7 @@ export default (data) => {
                 <input
                   id='title'
                   name='title'
-                  className='newpost-input'
+                  className={props.isModifiedForm ? 'newpost-mod newpost-input' : 'newpost-input'}
                   autoComplete='off'
                   placeholder='write title...'
                   required=''
@@ -71,7 +71,7 @@ export default (data) => {
                   text
                 </label>
                 <Textarea
-                  className='newpost-input'
+                  className={props.isModifiedForm ? 'newpost-mod newpost-input' : 'newpost-input'}
                   style={{resize: 'none'}}
                   minRows={8}
                   maxRows={8}
@@ -83,22 +83,22 @@ export default (data) => {
 
             { props.messageToUser !== null && <div>{ props.messageToUser }</div> }
 
-            <div className='newpost-btn'>
-              <button
-                className='btn'
-                disabled={!props.isModifiedForm}
-                onClick={props.postActions.savePost}>
-                save
-              </button>
+              <div className='newpost-btn'>
+                <button
+                  className='btn'
+                  disabled={ !props.isModifiedForm }
+                  onClick={ props.postActions.savePost }>
+                  save
+                </button>
 
-              <button
-                className='btn'
-                onClick={props.modalActions.onCloseModal}>
-                close
-              </button>
-            </div>
+                <button
+                  className='btn'
+                  onClick={ props.modalActions.onCloseModal }>
+                  close
+                </button>
+              </div>
 
-          </div> }
+            </div> }
 
         {props.showQuestion &&
           <Question onShowQuestionForm={props.modalActions.onShowQuestionForm}
